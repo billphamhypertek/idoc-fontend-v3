@@ -520,7 +520,7 @@ export default function ResultSection({
                     </div>
                     {result.isToken && (
                       <img
-                        src="/v2/assets/images/usb-token.png"
+                        src="/v3/assets/images/usb-token.png"
                         alt="Token"
                         className="absolute -top-1 -right-1 w-4 h-4"
                       />

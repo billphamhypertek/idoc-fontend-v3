@@ -536,7 +536,7 @@ export default function CommentsSection({
                     <UserRound className="w-4 h-4 text-blue-600" />
                     {commentItem.isToken && (
                       <img
-                        src="/v2/assets/images/usb-token.png"
+                        src="/v3/assets/images/usb-token.png"
                         className="absolute -top-1 -right-1 w-4 h-4"
                         alt="Token"
                       />

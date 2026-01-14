@@ -15,7 +15,7 @@ export default function Header() {
           {/* Left: Logo + Titles */}
           <div className="flex items-center">
             <img
-              src="/v2/images/dashboard/logo-icon.png"
+              src="/v3/images/dashboard/logo-icon.png"
               alt="Ban Cơ yếu Chính phủ"
               className="img-fluid"
               style={{ width: "64px", height: "80px", objectFit: "contain" }}
@@ -53,7 +53,7 @@ export default function Header() {
               rel="noopener noreferrer"
             >
               <img
-                src={"/v2/images/dashboard/trangtinnoibo.jpg"}
+                src={"/v3/images/dashboard/trangtinnoibo.jpg"}
                 alt="Trang tin nội bộ"
                 className="rounded-lg"
                 style={{ height: "80px", objectFit: "cover", opacity: 0.95 }}

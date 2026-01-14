@@ -479,10 +479,10 @@ export function FileManagerGrid({
             <Image
               src={
                 "fileCode" in item
-                  ? "/v2/assets/images/files/folder.png"
+                  ? "/v3/assets/images/files/folder.png"
                   : item.fileType?.toLowerCase().includes("pdf")
-                    ? "/v2/assets/images/files/PDF.png"
-                    : "/v2/assets/images/files/img_icon.png"
+                    ? "/v3/assets/images/files/PDF.png"
+                    : "/v3/assets/images/files/img_icon.png"
               }
               alt={"fileCode" in item ? "folder" : "file"}
               width={20}
@@ -786,7 +786,7 @@ export function FileManagerGrid({
               onContextMenu={(e) => handleContextMenu(e, folder)}
             >
               <Image
-                src="/v2/assets/images/files/folder.png"
+                src="/v3/assets/images/files/folder.png"
                 alt="Folder"
                 width={48}
                 height={48}
@@ -816,8 +816,8 @@ export function FileManagerGrid({
             <Image
               src={
                 icon.fileType?.toLowerCase().includes("pdf")
-                  ? "/v2/assets/images/files/PDF.png"
-                  : "/v2/assets/images/files/img_icon.png"
+                  ? "/v3/assets/images/files/PDF.png"
+                  : "/v3/assets/images/files/img_icon.png"
               }
               alt="File"
               width={48}

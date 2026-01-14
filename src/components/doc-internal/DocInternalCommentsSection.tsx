@@ -394,7 +394,7 @@ const DocInternalCommentsSection = forwardRef<
                         <UserIcon />
                         {cmt.isToken && (
                           <img
-                            src="/v2/assets/images/usb-token.png"
+                            src="/v3/assets/images/usb-token.png"
                             className="absolute top-0 right-0 w-5 h-5"
                             alt="Token"
                           />

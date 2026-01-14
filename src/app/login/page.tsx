@@ -108,14 +108,14 @@ export default function Login() {
     setAppLoading(false); // set loading khi logout thanh cong
   }, [setAppLoading]);
 
-  const wordFilePath = "/v2/files/HDSK-su-dung.docx";
-  const videoZipPath = "/v2/files/VIDEO-HDSD-KY-SO.zip";
+  const wordFilePath = "/v3/files/HDSK-su-dung.docx";
+  const videoZipPath = "/v3/files/VIDEO-HDSD-KY-SO.zip";
 
   return (
     <div
       className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-red-800 to-red-900 py-12 px-4 sm:px-6 lg:px-8 bg-center"
       style={{
-        backgroundImage: 'url("/v2/images/BackgroundBCY.png")',
+        backgroundImage: 'url("/v3/images/BackgroundBCY.png")',
         backgroundSize: "cover",
       }}
     >

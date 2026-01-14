@@ -55,16 +55,16 @@ const GeneralInfoInternalCard: React.FC<GeneralInfoInternalCardProps> = ({
   const getFileIcon = (fileName: string) => {
     const ext = getExtension(fileName)?.toLowerCase() || "";
     const iconMap: Record<string, string> = {
-      pdf: "/v2/assets/images/files/PDF.png",
-      doc: "/v2/assets/images/files/DOC.png",
-      docx: "/v2/assets/images/files/DOC.png",
-      xls: "/v2/assets/images/files/Excel.png",
-      xlsx: "/v2/assets/images/files/Excel.png",
-      png: "/v2/assets/images/files/Image.png",
-      jpg: "/v2/assets/images/files/Image.png",
-      jpeg: "/v2/assets/images/files/Image.png",
+      pdf: "/v3/assets/images/files/PDF.png",
+      doc: "/v3/assets/images/files/DOC.png",
+      docx: "/v3/assets/images/files/DOC.png",
+      xls: "/v3/assets/images/files/Excel.png",
+      xlsx: "/v3/assets/images/files/Excel.png",
+      png: "/v3/assets/images/files/Image.png",
+      jpg: "/v3/assets/images/files/Image.png",
+      jpeg: "/v3/assets/images/files/Image.png",
     };
-    return iconMap[ext] || "/v2/assets/images/files/unknow.gif";
+    return iconMap[ext] || "/v3/assets/images/files/unknow.gif";
   };
 
   // Check if file can be viewed (based on Angular's isViewFile logic)

@@ -869,7 +869,7 @@ const DocumentInCommentsSection = forwardRef<
                       <UserIcon />
                       {commentItem.isToken && (
                         <img
-                          src="/v2/assets/images/usb-token.png"
+                          src="/v3/assets/images/usb-token.png"
                           className="absolute"
                           style={{ right: "5px", width: "20px" }}
                           alt="Token"

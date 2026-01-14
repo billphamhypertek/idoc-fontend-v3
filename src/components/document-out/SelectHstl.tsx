@@ -568,7 +568,7 @@ export default function SelectHstl({
 
               <div className="mt-3 flex items-center text-sm text-gray-700 gap-1">
                 <img
-                  src="/v2/assets/images/home.png"
+                  src="/v3/assets/images/home.png"
                   alt="home"
                   className="w-4 h-4 cursor-pointer"
                   onClick={backHome}
@@ -612,19 +612,19 @@ export default function SelectHstl({
                                 <span className="inline-flex items-center gap-2">
                                   {isFolder(item.iconType) && (
                                     <img
-                                      src="/v2/assets/images/folder.png"
+                                      src="/v3/assets/images/folder.png"
                                       className="w-4 h-4"
                                     />
                                   )}
                                   {item.iconType === "FILE" && (
                                     <img
-                                      src={`/v2/assets/images/${getIconName(item.name)}`}
+                                      src={`/v3/assets/images/${getIconName(item.name)}`}
                                       className="w-4 h-4"
                                     />
                                   )}
                                   {item.iconType === "DOC" && (
                                     <img
-                                      src="/v2/assets/images/doc.png"
+                                      src="/v3/assets/images/doc.png"
                                       className="w-4 h-4"
                                     />
                                   )}
@@ -677,19 +677,19 @@ export default function SelectHstl({
                           <div className="text-center">
                             {isFolder(item.iconType) && (
                               <img
-                                src="/v2/assets/images/folder.png"
+                                src="/v3/assets/images/folder.png"
                                 className="w-12 h-12 mx-auto"
                               />
                             )}
                             {item.iconType === "FILE" && (
                               <img
-                                src={`/v2/assets/images/${getIconName(item.title || item.name)}`}
+                                src={`/v3/assets/images/${getIconName(item.title || item.name)}`}
                                 className="w-12 h-12 mx-auto"
                               />
                             )}
                             {item.iconType === "DOC" && (
                               <img
-                                src="/v2/assets/images/doc.png"
+                                src="/v3/assets/images/doc.png"
                                 className="w-12 h-12 mx-auto"
                               />
                             )}

@@ -81,7 +81,7 @@ export default function ProfilePages() {
   const [currentCert, setCurrentCert] = useState("");
   const [imageError, setImageError] = useState(false);
 
-  const DEFAULT_AVATAR = "/v2/assets/images/users/boy-no-photo.jpg";
+  const DEFAULT_AVATAR = "/v3/assets/images/users/boy-no-photo.jpg";
 
   const getAvatarUrl = (url: string | null): string => {
     if (!url || url.includes("undefined")) {

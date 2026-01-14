@@ -26,7 +26,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Hệ thống Quản lý văn bản và Điều hành tác nghiệp",
   description: "Ban Cơ yếu Chính phủ - Hệ thống quản lý văn bản",
-  icons: "/v2/images/dashboard/logo-icon.png",
+  icons: "/v3/images/dashboard/logo-icon.png",
 };
 
 export default async function RootLayout({
@@ -41,7 +41,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Script src="/v2/assets/js/vgcaplugin.js" strategy="afterInteractive" />
+        <Script src="/v3/assets/js/vgcaplugin.js" strategy="afterInteractive" />
 
         <ErrorBoundary>
           <AuthProvider>

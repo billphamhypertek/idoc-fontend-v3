@@ -191,7 +191,7 @@ export function FileManagerToolbar({
                   }`}
                 >
                   <Image
-                    src="/v2/assets/images/files/home.png"
+                    src="/v3/assets/images/files/home.png"
                     alt="Home"
                     width={16}
                     height={16}

@@ -21,7 +21,7 @@ export const AvatarUpload: React.FC<AvatarUploadProps> = ({
   const [imageError, setImageError] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const DEFAULT_AVATAR = "/v2/assets/images/users/boy-no-photo.jpg";
+  const DEFAULT_AVATAR = "/v3/assets/images/users/boy-no-photo.jpg";
 
   const getAvatarUrl = (url: string | null): string => {
     if (!url || url.includes("undefined")) {

@@ -65,7 +65,7 @@ export const UserProfileSection = () => {
     }
   };
 
-  const DEFAULT_AVATAR = "/v2/assets/images/users/boy-no-photo.jpg";
+  const DEFAULT_AVATAR = "/v3/assets/images/users/boy-no-photo.jpg";
 
   const getAvatarUrl = (photo: string | undefined | null): string => {
     if (!photo || photo.includes("undefined")) {

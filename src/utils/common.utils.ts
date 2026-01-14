@@ -284,16 +284,16 @@ const getOriginalName = (fileName: string) => fileName.split("__")[0];
 export const getAssetIcon = (fileName: string) => {
   const ext = getOriginalName(getExtension(fileName)?.toLowerCase() || "");
   const iconMap: Record<string, string> = {
-    pdf: "/v2/assets/images/files/PDF.png",
-    doc: "/v2/assets/images/files/DOC.png",
-    docx: "/v2/assets/images/files/DOC.png",
-    xls: "/v2/assets/images/files/Excel.png",
-    xlsx: "/v2/assets/images/files/Excel.png",
-    png: "/v2/assets/images/files/unknow.gif",
-    jpg: "/v2/assets/images/files/unknow.gif",
-    jpeg: "/v2/assets/images/files/unknow.gif",
+    pdf: "/v3/assets/images/files/PDF.png",
+    doc: "/v3/assets/images/files/DOC.png",
+    docx: "/v3/assets/images/files/DOC.png",
+    xls: "/v3/assets/images/files/Excel.png",
+    xlsx: "/v3/assets/images/files/Excel.png",
+    png: "/v3/assets/images/files/unknow.gif",
+    jpg: "/v3/assets/images/files/unknow.gif",
+    jpeg: "/v3/assets/images/files/unknow.gif",
   };
-  return iconMap[ext] || "/v2/assets/images/files/unknow.gif";
+  return iconMap[ext] || "/v3/assets/images/files/unknow.gif";
 };
 
 export const canView = (document: any, fileName: string) => {

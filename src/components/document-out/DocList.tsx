@@ -112,12 +112,12 @@ export default function DocList({
                   <span>
                     {item.iconType === "FILE" ? (
                       <img
-                        src={`/v2/assets/images/${getIconName(item.name)}`}
+                        src={`/v3/assets/images/${getIconName(item.name)}`}
                         style={{ width: 50 }}
                       />
                     ) : (
                       <img
-                        src="/v2/assets/images/doc.png"
+                        src="/v3/assets/images/doc.png"
                         style={{ width: 50 }}
                       />
                     )}

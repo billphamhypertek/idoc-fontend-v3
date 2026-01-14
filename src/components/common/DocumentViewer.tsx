@@ -23,7 +23,7 @@ const PDFViewerClient = dynamic(
     const PDFViewerClient = ({ fileUrl }: { fileUrl: string }) => {
       const pluginInstance = defaultLayoutPlugin();
       return (
-        <Worker workerUrl={"/v2/pdf.worker.min.js"}>
+        <Worker workerUrl={"/v3/pdf.worker.min.js"}>
           <Viewer fileUrl={fileUrl} plugins={[pluginInstance]} />
         </Worker>
       );
