@@ -1,0 +1,251 @@
+/* legend */
+.gantt-legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.gantt-legend .lg {
+  font-size: 13px;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gantt-legend .lg i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.lg-doing i {
+  background: #3b82f6;
+}
+.lg-late i {
+  background: #f59e0b;
+}
+.lg-overdue i {
+  background: #ef4444;
+}
+.lg-done i {
+  background: #10b981;
+}
+.lg-warning i {
+  background: #fcd34d;
+}
+.lg-done-overdue i {
+  background: #ec4899;
+}
+
+/* scroller duy nhất */
+.gantt-scroller {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+/* cấu trúc hàng: 240px tên + vùng chart co giãn */
+.gantt-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  padding-right: 20px;
+  align-items: center;
+  position: relative;
+}
+
+.gantt-row--head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chart-line-head {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  margin-left: 240px;
+}
+
+/* ô tên sticky trái */
+.cell-name {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  padding: 0 12px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e5e7eb;
+  max-width: 240px;
+  width: 240px;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cell-name-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+
+.cell-name--head {
+  font-weight: 600;
+}
+
+/* ô chart */
+.cell-chart {
+  position: relative;
+  padding: 0 12px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* header cột mốc trong hàng đầu */
+.cell-chart--head {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chart-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  font-weight: 700;
+  color: #297edd;
+  height: 44px;
+}
+
+/* vạch dọc 50/75/100% phủ toàn vùng chart */
+.chart-lines {
+  position: absolute;
+  inset: 0 12px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Các đường dọc chia mốc */
+.line {
+  width: 5px;
+  height: 540px;
+  background: #9ca3af;
+}
+
+.line-red {
+  width: 5px;
+  height: 540px;
+  background: #ef0000;
+}
+
+.v50 {
+  left: calc(50% - 20px);
+  transform: translateX(-1px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  display: grid;
+  place-items: center;
+}
+
+.v100 {
+  left: calc(100% - 20px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  display: grid;
+  place-items: center;
+}
+
+/* Nhãn của đường dọc */
+.v50 span {
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  padding: 0 4px;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #297edd;
+}
+
+.v100 span {
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  padding: 0 4px;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #ef0000;
+}
+
+/* hàng dữ liệu */
+.gantt-row:not(.gantt-row--head) {
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* thanh tiến độ */
+.bar {
+  position: relative;
+  height: 24px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  z-index: 4;
+  min-width: 2px;
+  cursor: pointer;
+}
+
+.bar-las {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* tooltip */
+.gantt-tip {
+  position: absolute;
+  transform: translate(-50%, -110%);
+  z-index: 1200;
+  pointer-events: none;
+}
+
+.tip-box {
+  background: #facc15;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  min-width: 220px;
+  color: #111827;
+}
+
+.tip-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #facc15;
+  margin: 0 auto;
+}
+
+.tline {
+  font-size: 13px;
+  margin: 4px 0;
+}

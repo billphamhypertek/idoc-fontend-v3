@@ -1,0 +1,20 @@
+node_modules
+.next
+dist
+build
+coverage
+
+# lockfiles
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# generated/static assets
+public/assets/images/files
+public/assets/images/users
+public/files
+public/images
+
+# snapshots
+*.snap
+

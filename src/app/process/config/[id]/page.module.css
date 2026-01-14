@@ -1,0 +1,45 @@
+/* Custom BPMN Diagram Styles - matching v1 */
+
+.diagramContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.diagramContainer :global(.bpmn-icon-intermediate-event-none),
+.diagramContainer :global(.bpmn-icon-text-annotation) {
+  display: none !important;
+}
+
+.diagramContainer :global([data-action="create.intermediate-event"]),
+.diagramContainer :global([data-action="create.subprocess-expanded"]),
+.diagramContainer :global([data-action="create.data-object"]),
+.diagramContainer :global([data-action="create.data-store"]),
+.diagramContainer :global([data-action="create.participant-expanded"]),
+.diagramContainer :global([data-action="create.group"]),
+.diagramContainer :global([data-action="lasso-tool"]),
+.diagramContainer :global([data-action="hand-tool"]),
+.diagramContainer :global([data-action="space-tool"]) {
+  display: none !important;
+}
+
+.diagramContainer :global(.djs-palette) {
+  left: auto !important;
+  right: 20px !important;
+  z-index: 10 !important;
+}
+
+.diagramContainer :global(.djs-palette),
+.diagramContainer :global(.djs-context-pad),
+.diagramContainer :global(.djs-popup),
+.diagramContainer :global(.djs-overlay) {
+  z-index: 10 !important;
+}
+
+.diagramContainer :global(.bjs-powered-by) {
+  display: none !important;
+}
+
+.diagramContainer :global([data-id="replace-with-collapsed-ad-hoc-subprocess"]),
+.diagramContainer :global([data-id="replace-with-ad-hoc-subprocess"]) {
+  display: none !important;
+}

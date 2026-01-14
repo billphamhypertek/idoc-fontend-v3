@@ -1,0 +1,68 @@
+/* Task Follow Statistic Styles */
+.document-statistics-container {
+  @apply w-full;
+}
+
+.document-statistics-container--chart {
+  @apply mb-4;
+}
+
+.document-statistics-container--legend {
+  @apply flex flex-wrap gap-4 mb-4 justify-center;
+}
+
+.document-statistics-container--legend .legend-item {
+  @apply flex items-center;
+}
+
+.document-statistics-container--legend .legend-item-color {
+  @apply w-4 h-4 rounded;
+}
+
+.document-statistics-container--legend .legend-item-label {
+  @apply ml-2 text-sm font-medium;
+}
+
+.document-statistics-container--footer {
+  @apply flex justify-end;
+}
+
+.incoming-document-statistics-container {
+  @apply w-full;
+}
+
+.incoming-document-statistics-container--table {
+  @apply mb-4 overflow-x-auto;
+}
+
+.incoming-document-statistics-container--footer {
+  @apply flex justify-end;
+}
+
+.task-statistic-stacked-container {
+  @apply w-full;
+}
+
+.task-statistic-stacked-container--chart {
+  @apply mb-4;
+}
+
+.task-statistic-stacked-container--legend {
+  @apply flex flex-wrap gap-4 mb-4 justify-center;
+}
+
+.task-statistic-stacked-container--legend .legend-item {
+  @apply flex items-center;
+}
+
+.task-statistic-stacked-container--legend .legend-item-color {
+  @apply w-4 h-4 rounded;
+}
+
+.task-statistic-stacked-container--legend .legend-item-label {
+  @apply ml-2 text-sm font-medium;
+}
+
+.statistical-week {
+  @apply text-lg font-semibold text-gray-800;
+}
