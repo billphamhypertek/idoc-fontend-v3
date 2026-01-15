@@ -1,134 +1,149 @@
 "use client";
 
-import { Clock, MapPin, Users, ChevronLeft, ChevronRight } from "lucide-react";
+import { ClockIcon, ExternalLinkIcon, ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { MapPin } from "lucide-react";
 import { scheduleItems } from "@/data/mock-data";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-
-interface ScheduleItemProps {
-    time: string;
-    title: string;
-    location: string;
-    participants: string;
-}
-
-function ScheduleItem({ time, title, location, participants }: ScheduleItemProps) {
-    return (
-        <div className="flex gap-3 p-2.5 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors group cursor-pointer">
-            <div className="flex flex-col items-center min-w-[60px]">
-                <span className="text-sm font-semibold text-[hsl(var(--v3-primary))]">
-                    {time.split(" - ")[0]}
-                </span>
-                <span className="text-xs text-[hsl(var(--v3-muted-foreground))]">
-                    {time.split(" - ")[1]}
-                </span>
-            </div>
-            <div className="flex-1 border-l-2 border-[hsl(var(--v3-primary))] pl-3">
-                <h4 className="text-sm font-medium text-[hsl(var(--v3-card-foreground))] group-hover:text-[hsl(var(--v3-primary))] transition-colors line-clamp-2">
-                    {title}
-                </h4>
-                {location && (
-                    <div className="flex items-center gap-1 mt-1 text-xs text-[hsl(var(--v3-muted-foreground))]">
-                        <MapPin className="w-3.5 h-3.5" />
-                        <span className="truncate">{location}</span>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-}
 
 interface ScheduleCardProps {
     className?: string;
 }
 
 export function ScheduleCard({ className }: ScheduleCardProps) {
-    const today = new Date();
-    const formatDate = () => {
-        const days = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
-        return `${days[today.getDay()]}, ${today.getDate()}/${today.getMonth() + 1}`;
-    };
+    const boardItems = scheduleItems.filter((item) => item.type === "board");
+    const unitItems = scheduleItems.filter((item) => item.type === "unit");
 
-    const morningItems = scheduleItems.filter((item) => item.period === "morning");
-    const afternoonItems = scheduleItems.filter((item) => item.period === "afternoon");
+    const today = new Date();
+    const shortDate = today.toLocaleDateString("vi-VN", { weekday: "short", day: "numeric", month: "numeric" });
 
     return (
-        <div className={cn("bg-white rounded-xl border border-[hsl(var(--v3-border))] shadow-sm flex flex-col", className)}>
-            <div className="shrink-0 flex items-center justify-between p-3 border-b border-[hsl(var(--v3-border))]">
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center justify-center w-9 h-9 bg-[hsl(var(--v3-primary))]/10 rounded-lg">
-                        <Clock className="w-5 h-5 text-[hsl(var(--v3-primary))]" />
+        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+            {/* Header with title inside */}
+            <div className="shrink-0 flex items-center justify-between p-5">
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-primary))]/10 rounded-xl">
+                        <ClockIcon className="w-5 h-5 text-[hsl(var(--v3-primary))]" />
                     </div>
-                    <span className="text-sm text-[hsl(var(--v3-muted-foreground))]">
-                        {formatDate()}
-                    </span>
+                    <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
+                        Lịch hôm nay
+                    </h3>
                 </div>
-                <div className="flex items-center gap-0.5">
-                    <button className="p-1.5 rounded hover:bg-[hsl(var(--v3-muted))] transition-colors">
-                        <ChevronLeft className="w-4 h-4 text-[hsl(var(--v3-muted-foreground))]" />
+                <div className="flex items-center gap-1">
+                    <button className="p-1.5 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors">
+                        <ChevronLeftIcon className="w-4 h-4 text-[hsl(var(--v3-muted-foreground))]" />
                     </button>
-                    <button className="px-2.5 py-1.5 text-sm font-medium text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded transition-colors">
-                        Hôm nay
-                    </button>
-                    <button className="p-1.5 rounded hover:bg-[hsl(var(--v3-muted))] transition-colors">
-                        <ChevronRight className="w-4 h-4 text-[hsl(var(--v3-muted-foreground))]" />
+                    <span className="px-2 text-sm font-semibold text-[hsl(var(--v3-primary))]">
+                        {shortDate}
+                    </span>
+                    <button className="p-1.5 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors">
+                        <ChevronRightIcon className="w-4 h-4 text-[hsl(var(--v3-muted-foreground))]" />
                     </button>
                 </div>
             </div>
 
-            <Tabs defaultValue="board" className="flex-1 flex flex-col min-h-0 p-3">
-                <TabsList className="shrink-0 w-full mb-2">
-                    <TabsTrigger value="board" className="flex-1 text-sm">
+            {/* Tabs by Type */}
+            <Tabs defaultValue="board" className="flex-1 flex flex-col min-h-0">
+                <TabsList className="shrink-0 mx-5 mb-3 w-auto">
+                    <TabsTrigger value="board" className="flex-1">
                         Lịch Ban
                     </TabsTrigger>
-                    <TabsTrigger value="unit" className="flex-1 text-sm">
+                    <TabsTrigger value="unit" className="flex-1">
                         Lịch Đơn vị
                     </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="board" className="flex-1 min-h-0 mt-0">
+                <TabsContent value="board" className="flex-1 min-h-0 m-0">
                     <ScrollArea className="h-full">
-                        <div className="space-y-3">
-                            {/* Morning */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="text-xs font-medium text-white bg-[hsl(var(--v3-warning))] px-2 py-0.5 rounded">
-                                        SÁNG
-                                    </span>
-                                    <div className="flex-1 h-px bg-[hsl(var(--v3-border))]" />
-                                </div>
-                                <div className="space-y-1">
-                                    {morningItems.map((item) => (
-                                        <ScheduleItem key={item.id} {...item} />
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Afternoon */}
-                            <div>
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="text-xs font-medium text-white bg-[hsl(var(--v3-info))] px-2 py-0.5 rounded">
-                                        CHIỀU
-                                    </span>
-                                    <div className="flex-1 h-px bg-[hsl(var(--v3-border))]" />
-                                </div>
-                                <div className="space-y-1">
-                                    {afternoonItems.map((item) => (
-                                        <ScheduleItem key={item.id} {...item} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                        <ScheduleTimeline items={boardItems} />
                     </ScrollArea>
                 </TabsContent>
 
-                <TabsContent value="unit" className="flex-1 min-h-0 mt-0">
-                    <div className="flex items-center justify-center h-full text-sm text-[hsl(var(--v3-muted-foreground))]">
-                        Chưa có lịch đơn vị
-                    </div>
+                <TabsContent value="unit" className="flex-1 min-h-0 m-0">
+                    <ScrollArea className="h-full">
+                        <ScheduleTimeline items={unitItems} />
+                    </ScrollArea>
                 </TabsContent>
             </Tabs>
+        </div>
+    );
+}
+
+function ScheduleTimeline({ items }: { items: typeof scheduleItems }) {
+    const morning = items.filter((item) => item.period === "morning");
+    const afternoon = items.filter((item) => item.period === "afternoon");
+
+    return (
+        <div className="px-5 pb-5 space-y-4">
+            {morning.length > 0 && (
+                <div>
+                    <div className="inline-block px-2.5 py-1 mb-3 text-xs font-bold text-[hsl(var(--v3-warning))] bg-[hsl(var(--v3-warning))]/10 rounded-lg uppercase tracking-wide">
+                        Sáng
+                    </div>
+                    <div className="space-y-0">
+                        {morning.map((item, index) => (
+                            <TimelineItem key={item.id} item={item} isLast={index === morning.length - 1} />
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {afternoon.length > 0 && (
+                <div>
+                    <div className="inline-block px-2.5 py-1 mb-3 text-xs font-bold text-[hsl(var(--v3-info))] bg-[hsl(var(--v3-info))]/10 rounded-lg uppercase tracking-wide">
+                        Chiều
+                    </div>
+                    <div className="space-y-0">
+                        {afternoon.map((item, index) => (
+                            <TimelineItem key={item.id} item={item} isLast={index === afternoon.length - 1} />
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {items.length === 0 && (
+                <div className="text-center py-8 text-sm text-[hsl(var(--v3-muted-foreground))]">
+                    Không có lịch nào
+                </div>
+            )}
+        </div>
+    );
+}
+
+function TimelineItem({ item, isLast }: { item: (typeof scheduleItems)[number]; isLast: boolean }) {
+    const [startTime, endTime] = item.time.split(" - ");
+
+    return (
+        <div className="flex gap-4 group cursor-pointer">
+            {/* Time Column */}
+            <div className="w-14 shrink-0 text-right">
+                <div className="text-sm font-bold text-[hsl(var(--v3-primary))]">
+                    {startTime}
+                </div>
+                {endTime && (
+                    <div className="text-xs text-[hsl(var(--v3-muted-foreground))]">
+                        {endTime}
+                    </div>
+                )}
+            </div>
+
+            {/* Timeline Line */}
+            <div className="relative flex flex-col items-center pt-1">
+                <div className="w-2.5 h-2.5 rounded-full bg-[hsl(var(--v3-primary))] ring-4 ring-[hsl(var(--v3-primary))]/10 shrink-0" />
+                {!isLast && <div className="w-0.5 flex-1 bg-[hsl(var(--v3-border))]" />}
+            </div>
+
+            {/* Content */}
+            <div className={cn("flex-1 pb-5", !isLast && "mb-4 border-b border-black/5")}>
+                <h4 className="text-sm font-semibold text-[hsl(var(--v3-card-foreground))] mb-1 group-hover:text-[hsl(var(--v3-primary))] transition-colors">
+                    {item.title}
+                </h4>
+                <div className="flex items-center gap-1.5 text-sm text-[hsl(var(--v3-muted-foreground))]">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{item.location}</span>
+                </div>
+            </div>
         </div>
     );
 }

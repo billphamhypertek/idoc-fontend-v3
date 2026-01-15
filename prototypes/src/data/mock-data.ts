@@ -115,8 +115,18 @@ export const menuGroups = [
     },
 ];
 
+// Menu item type
+export interface MenuItem {
+    id: string;
+    label: string;
+    icon: string;
+    href: string;
+    badge?: number;
+    active?: boolean;
+}
+
 // Flatten menu items for backward compatibility
-export const menuItems = menuGroups.flatMap(group => group.items);
+export const menuItems: MenuItem[] = menuGroups.flatMap(group => group.items) as MenuItem[];
 
 // Sub-menu items for each module
 export const subMenuItems: Record<string, { id: string; label: string; href: string }[]> = {
@@ -158,14 +168,27 @@ export const subMenuItems: Record<string, { id: string; label: string; href: str
     ],
 };
 
-// Theme color palettes
+// Theme color palettes - Default is Dark Red (#b22222)
 export const themePalettes = [
+    {
+        id: "darkred",
+        name: "Đỏ đậm",
+        primary: "0 69% 42%",           // #b22222
+        primaryHover: "0 69% 36%",
+        accent: "45 100% 51%",
+    },
     {
         id: "blue",
         name: "Xanh dương",
         primary: "220 95% 45%",
         primaryHover: "220 95% 40%",
-        sidebar: "215 25% 18%",
+        accent: "45 100% 51%",
+    },
+    {
+        id: "violet",
+        name: "Tím xanh",
+        primary: "250 80% 60%",          // #635bff (Matdash)
+        primaryHover: "250 80% 52%",
         accent: "45 100% 51%",
     },
     {
@@ -173,23 +196,13 @@ export const themePalettes = [
         name: "Xanh ngọc",
         primary: "173 80% 40%",
         primaryHover: "173 80% 35%",
-        sidebar: "173 40% 18%",
         accent: "38 92% 50%",
-    },
-    {
-        id: "purple",
-        name: "Tím",
-        primary: "262 83% 58%",
-        primaryHover: "262 83% 50%",
-        sidebar: "262 40% 20%",
-        accent: "45 100% 51%",
     },
     {
         id: "green",
         name: "Xanh lá",
         primary: "142 72% 35%",
         primaryHover: "142 72% 30%",
-        sidebar: "142 30% 18%",
         accent: "38 92% 50%",
     },
     {
@@ -197,16 +210,7 @@ export const themePalettes = [
         name: "Cam",
         primary: "25 95% 53%",
         primaryHover: "25 95% 48%",
-        sidebar: "25 30% 20%",
         accent: "199 89% 48%",
-    },
-    {
-        id: "red",
-        name: "Đỏ",
-        primary: "0 72% 51%",
-        primaryHover: "0 72% 45%",
-        sidebar: "0 30% 18%",
-        accent: "45 100% 51%",
     },
 ];
 

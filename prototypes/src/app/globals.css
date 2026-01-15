@@ -3,7 +3,7 @@
 
 /*
  * ĐHTN v3 Prototype - Global Styles
- * Premium Enterprise Look
+ * Matdash-inspired Enterprise Look
  */
 
 @layer base {
@@ -13,9 +13,9 @@
 
   body {
     @apply bg-[hsl(var(--v3-background))] text-[hsl(var(--v3-card-foreground))];
-    font-family: var(--font-inter), var(--v3-font-sans);
+    font-family: var(--font-manrope), var(--v3-font-sans);
     font-size: var(--v3-font-size-base);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* Focus outline for accessibility */
@@ -32,8 +32,8 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-track {
@@ -42,7 +42,7 @@
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background-color: hsl(var(--v3-border));
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
@@ -69,6 +69,11 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Matdash card shadow */
+  .card-shadow {
+    box-shadow: var(--v3-shadow-card);
   }
 }
 

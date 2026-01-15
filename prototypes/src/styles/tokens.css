@@ -1,16 +1,18 @@
 /**
  * ĐHTN v3 Prototype - Design Tokens
- * Premium Enterprise palette
+ * Matdash-inspired Enterprise palette
  */
 
 :root {
-  /* Primary - Deep Blue */
-  --v3-primary: 220 95% 45%;
-  --v3-primary-hover: 220 95% 40%;
+  /* Primary - Default Dark Red (changeable via theme) */
+  --v3-primary: 0 69% 42%;
+  /* #b22222 */
+  --v3-primary-hover: 0 69% 36%;
   --v3-primary-foreground: 0 0% 100%;
 
   /* Secondary - Neutral Gray */
-  --v3-secondary: 215 25% 27%;
+  --v3-secondary: 215 16% 47%;
+  /* #687a91 */
   --v3-secondary-foreground: 0 0% 98%;
 
   /* Accent - Gold */
@@ -18,60 +20,76 @@
   --v3-accent-foreground: 0 0% 10%;
 
   /* Semantic */
-  --v3-success: 142 72% 35%;
-  --v3-warning: 38 92% 50%;
-  --v3-error: 0 84% 60%;
-  --v3-info: 199 89% 48%;
+  --v3-success: 158 64% 40%;
+  /* Darker green */
+  --v3-warning: 36 100% 50%;
+  /* #f59e0b */
+  --v3-error: 354 70% 50%;
+  /* #ef4444 */
+  --v3-info: 199 89% 45%;
+  /* #0891b2 */
 
-  /* Surfaces */
-  --v3-background: 0 0% 98%;
+  /* Surfaces - Matdash style */
+  --v3-background: 210 15% 97%;
+  /* Very light grey */
   --v3-card: 0 0% 100%;
-  --v3-card-foreground: 240 10% 3.9%;
-  --v3-border: 240 5.9% 90%;
-  --v3-muted: 240 4.8% 95.9%;
-  --v3-muted-foreground: 240 3.8% 46.1%;
+  --v3-card-foreground: 215 25% 20%;
+  /* #2a3547 - darker for readability */
+  --v3-border: 210 10% 92%;
+  /* Very light border like Matdash */
+  --v3-muted: 210 14% 96%;
+  /* #f5f7f9 */
+  --v3-muted-foreground: 215 15% 45%;
+  /* #5a6a7a - darker muted text */
 
-  /* Sidebar */
-  --v3-sidebar-bg: 215 25% 18%;
-  --v3-sidebar-text: 0 0% 90%;
-  --v3-sidebar-hover: 215 25% 25%;
-  --v3-sidebar-active: 220 95% 45%;
+  /* Sidebar - White with subtle border */
+  --v3-sidebar-bg: 0 0% 100%;
+  --v3-sidebar-text: 215 15% 45%;
+  /* Same as muted-foreground */
+  --v3-sidebar-hover: 210 14% 96%;
+  --v3-sidebar-active: 0 69% 42%;
 
   /* Spacing */
   --v3-space-1: 0.25rem;
   --v3-space-2: 0.5rem;
   --v3-space-3: 0.75rem;
   --v3-space-4: 1rem;
+  --v3-space-5: 1.25rem;
   --v3-space-6: 1.5rem;
   --v3-space-8: 2rem;
 
-  /* Typography - Larger for 50+ friendly */
-  --v3-font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --v3-font-size-xs: 0.8125rem;
-  /* 13px */
-  --v3-font-size-sm: 0.875rem;
+  /* Typography - Larger for readability */
+  --v3-font-sans:
+    "Manrope", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --v3-font-size-xs: 0.875rem;
   /* 14px */
-  --v3-font-size-base: 0.9375rem;
+  --v3-font-size-sm: 0.9375rem;
   /* 15px */
+  --v3-font-size-base: 1rem;
+  /* 16px */
   --v3-font-size-lg: 1.0625rem;
   /* 17px */
-  --v3-font-size-xl: 1.1875rem;
-  /* 19px */
+  /* 16px */
+  --v3-font-size-xl: 1.125rem;
+  /* 18px */
   --v3-font-size-2xl: 1.5rem;
   /* 24px */
   --v3-font-size-3xl: 1.875rem;
   /* 30px */
 
-  /* Shadows */
-  --v3-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --v3-shadow-md:
-    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --v3-shadow-lg:
-    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Shadows - Very subtle like Matdash */
+  --v3-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.02);
+  --v3-shadow-md: 0 2px 8px 0 rgb(0 0 0 / 0.03);
+  --v3-shadow-lg: 0 8px 24px 0 rgb(0 0 0 / 0.04);
+  --v3-shadow-card: 0 4px 12px 0 rgb(0 0 0 / 0.03);
 
-  /* Radii */
-  --v3-radius-sm: 0.25rem;
-  --v3-radius-md: 0.375rem;
-  --v3-radius-lg: 0.5rem;
-  --v3-radius-xl: 0.75rem;
+  /* Radii - Matdash uses larger radius */
+  --v3-radius-sm: 0.375rem;
+  /* 6px */
+  --v3-radius-md: 0.5rem;
+  /* 8px */
+  --v3-radius-lg: 0.75rem;
+  /* 12px */
+  --v3-radius-xl: 1rem;
+  /* 16px */
 }

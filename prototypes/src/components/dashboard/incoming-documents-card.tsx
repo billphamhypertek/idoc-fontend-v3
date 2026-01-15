@@ -1,6 +1,6 @@
 "use client";
 
-import { FileDown, ExternalLink, AlertCircle, Clock, CheckCircle2 } from "lucide-react";
+import { DownloadIcon, ExternalLinkIcon, ClockIcon, ExclamationTriangleIcon, CheckCircledIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { incomingDocuments } from "@/data/mock-data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
@@ -11,8 +11,8 @@ const priorityConfig = {
         className: "bg-[hsl(var(--v3-error))] text-white",
     },
     high: {
-        label: "Q.trọng",
-        className: "bg-[hsl(var(--v3-warning))] text-[hsl(var(--v3-warning-foreground))]",
+        label: "Quan trọng",
+        className: "bg-[hsl(var(--v3-warning))] text-white",
     },
     normal: {
         label: "Thường",
@@ -23,17 +23,17 @@ const priorityConfig = {
 const statusConfig = {
     pending: {
         label: "Chờ xử lý",
-        icon: AlertCircle,
+        icon: ExclamationTriangleIcon,
         className: "text-[hsl(var(--v3-warning))]",
     },
     processing: {
         label: "Đang xử lý",
-        icon: Clock,
+        icon: UpdateIcon,
         className: "text-[hsl(var(--v3-info))]",
     },
     done: {
-        label: "Hoàn thành",
-        icon: CheckCircle2,
+        label: "Đã xử lý",
+        icon: CheckCircledIcon,
         className: "text-[hsl(var(--v3-success))]",
     },
 };
@@ -46,24 +46,25 @@ export function IncomingDocumentsCard({ className }: IncomingDocumentsCardProps)
     const pendingCount = incomingDocuments.filter((d) => d.status === "pending").length;
 
     return (
-        <div className={cn("bg-white rounded-xl border border-[hsl(var(--v3-border))] shadow-sm flex flex-col", className)}>
-            <div className="shrink-0 flex items-center justify-between p-3 border-b border-[hsl(var(--v3-border))]">
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center justify-center w-9 h-9 bg-[hsl(var(--v3-success))]/10 rounded-lg">
-                        <FileDown className="w-5 h-5 text-[hsl(var(--v3-success))]" />
+        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+            {/* Header with title inside */}
+            <div className="shrink-0 flex items-center justify-between p-5">
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-info))]/10 rounded-xl">
+                        <DownloadIcon className="w-5 h-5 text-[hsl(var(--v3-info))]" />
                     </div>
-                    <span className="text-sm text-[hsl(var(--v3-muted-foreground))]">
-                        {pendingCount} chờ xử lý
-                    </span>
+                    <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
+                        Văn bản đến
+                    </h3>
                 </div>
-                <button className="flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded transition-colors">
-                    Xem tất cả
-                    <ExternalLink className="w-3.5 h-3.5" />
+                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-xl transition-colors">
+                    {incomingDocuments.length} văn bản
+                    <ExternalLinkIcon className="w-4 h-4" />
                 </button>
             </div>
 
             <ScrollArea className="flex-1 min-h-0">
-                <div className="p-3 space-y-2">
+                <div className="px-5 pb-5 space-y-3">
                     {incomingDocuments.map((doc) => {
                         const priority = priorityConfig[doc.priority];
                         const status = statusConfig[doc.status];
@@ -72,33 +73,37 @@ export function IncomingDocumentsCard({ className }: IncomingDocumentsCardProps)
                         return (
                             <div
                                 key={doc.id}
-                                className="p-3 rounded-lg border border-[hsl(var(--v3-border))] hover:border-[hsl(var(--v3-primary))]/50 hover:shadow-sm transition-all cursor-pointer group"
+                                className={cn(
+                                    "p-4 rounded-xl border hover:shadow-md transition-all cursor-pointer group",
+                                    doc.priority === "urgent"
+                                        ? "border-[hsl(var(--v3-error))]/30 bg-[hsl(var(--v3-error))]/5"
+                                        : "border-black/5 hover:border-[hsl(var(--v3-primary))]/30"
+                                )}
                             >
-                                <div className="flex items-start justify-between gap-2 mb-2">
+                                <div className="flex items-center justify-between gap-2 mb-2">
                                     <div className="flex items-center gap-2">
-                                        <span className={cn("text-xs font-medium px-2 py-0.5 rounded", priority.className)}>
+                                        <span className={cn("text-xs font-semibold px-2 py-1 rounded-lg", priority.className)}>
                                             {priority.label}
                                         </span>
-                                        <span className="text-sm font-medium text-[hsl(var(--v3-primary))]">
+                                        <code className="text-xs font-mono text-[hsl(var(--v3-muted-foreground))] bg-[hsl(var(--v3-muted))] px-2 py-0.5 rounded">
                                             {doc.number}
-                                        </span>
+                                        </code>
                                     </div>
-                                    <span className="text-xs text-[hsl(var(--v3-muted-foreground))]">
-                                        {doc.date}
+                                    <span className={cn("flex items-center gap-1 text-xs font-medium", status.className)}>
+                                        <StatusIcon className="w-3.5 h-3.5" />
+                                        {status.label}
                                     </span>
                                 </div>
 
-                                <h4 className="text-sm font-medium text-[hsl(var(--v3-card-foreground))] line-clamp-2 mb-2 group-hover:text-[hsl(var(--v3-primary))] transition-colors">
+                                <h4 className="text-sm font-medium text-[hsl(var(--v3-card-foreground))] line-clamp-2 mb-3 group-hover:text-[hsl(var(--v3-primary))] transition-colors">
                                     {doc.title}
                                 </h4>
 
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs text-[hsl(var(--v3-muted-foreground))] truncate max-w-[180px]">
-                                        Từ: {doc.from}
-                                    </span>
-                                    <div className={cn("flex items-center gap-1 text-xs", status.className)}>
-                                        <StatusIcon className="w-3.5 h-3.5" />
-                                        <span>{status.label}</span>
+                                <div className="flex items-center justify-between text-xs text-[hsl(var(--v3-muted-foreground))]">
+                                    <span className="font-medium">{doc.from}</span>
+                                    <div className="flex items-center gap-1.5">
+                                        <ClockIcon className="w-3.5 h-3.5" />
+                                        <span>Hạn: {doc.deadline}</span>
                                     </div>
                                 </div>
                             </div>

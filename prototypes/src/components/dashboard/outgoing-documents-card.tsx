@@ -1,28 +1,25 @@
 "use client";
 
-import { FileUp, ExternalLink, PenLine, CheckCircle, Send } from "lucide-react";
+import { UploadIcon, ExternalLinkIcon, Pencil1Icon, CheckCircledIcon, RocketIcon } from "@radix-ui/react-icons";
 import { outgoingDocuments } from "@/data/mock-data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 const statusConfig = {
     draft: {
-        label: "Bản nháp",
-        icon: PenLine,
-        className: "bg-[hsl(var(--v3-muted))] text-[hsl(var(--v3-muted-foreground))]",
-        iconClassName: "text-[hsl(var(--v3-muted-foreground))]",
+        label: "Dự thảo",
+        icon: Pencil1Icon,
+        className: "text-[hsl(var(--v3-muted-foreground))] bg-[hsl(var(--v3-muted))]",
     },
     reviewing: {
         label: "Đang duyệt",
-        icon: CheckCircle,
-        className: "bg-[hsl(var(--v3-warning))]/10 text-[hsl(var(--v3-warning))]",
-        iconClassName: "text-[hsl(var(--v3-warning))]",
+        icon: RocketIcon,
+        className: "text-[hsl(var(--v3-info))] bg-[hsl(var(--v3-info))]/10",
     },
     approved: {
         label: "Đã duyệt",
-        icon: Send,
-        className: "bg-[hsl(var(--v3-success))]/10 text-[hsl(var(--v3-success))]",
-        iconClassName: "text-[hsl(var(--v3-success))]",
+        icon: CheckCircledIcon,
+        className: "text-[hsl(var(--v3-success))] bg-[hsl(var(--v3-success))]/10",
     },
 };
 
@@ -34,24 +31,25 @@ export function OutgoingDocumentsCard({ className }: OutgoingDocumentsCardProps)
     const draftCount = outgoingDocuments.filter((d) => d.status === "draft" || d.status === "reviewing").length;
 
     return (
-        <div className={cn("bg-white rounded-xl border border-[hsl(var(--v3-border))] shadow-sm flex flex-col", className)}>
-            <div className="shrink-0 flex items-center justify-between p-3 border-b border-[hsl(var(--v3-border))]">
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center justify-center w-9 h-9 bg-[hsl(var(--v3-info))]/10 rounded-lg">
-                        <FileUp className="w-5 h-5 text-[hsl(var(--v3-info))]" />
+        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+            {/* Header with title inside */}
+            <div className="shrink-0 flex items-center justify-between p-5">
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-warning))]/10 rounded-xl">
+                        <UploadIcon className="w-5 h-5 text-[hsl(var(--v3-warning))]" />
                     </div>
-                    <span className="text-sm text-[hsl(var(--v3-muted-foreground))]">
-                        {draftCount} đang soạn/duyệt
-                    </span>
+                    <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
+                        Văn bản đi
+                    </h3>
                 </div>
-                <button className="flex items-center gap-1 px-2.5 py-1.5 text-sm font-medium text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded transition-colors">
-                    Xem tất cả
-                    <ExternalLink className="w-3.5 h-3.5" />
+                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-xl transition-colors">
+                    {outgoingDocuments.length} văn bản
+                    <ExternalLinkIcon className="w-4 h-4" />
                 </button>
             </div>
 
             <ScrollArea className="flex-1 min-h-0">
-                <div className="p-3 space-y-2">
+                <div className="px-5 pb-5 space-y-3">
                     {outgoingDocuments.map((doc) => {
                         const status = statusConfig[doc.status];
                         const StatusIcon = status.icon;
@@ -59,10 +57,10 @@ export function OutgoingDocumentsCard({ className }: OutgoingDocumentsCardProps)
                         return (
                             <div
                                 key={doc.id}
-                                className="p-3 rounded-lg border border-[hsl(var(--v3-border))] hover:border-[hsl(var(--v3-primary))]/50 hover:shadow-sm transition-all cursor-pointer group"
+                                className="p-4 rounded-xl border border-black/5 hover:shadow-md hover:border-[hsl(var(--v3-primary))]/30 transition-all cursor-pointer group"
                             >
-                                <div className="flex items-start justify-between gap-2 mb-2">
-                                    <span className={cn("flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded", status.className)}>
+                                <div className="flex items-center justify-between gap-2 mb-2">
+                                    <span className={cn("flex items-center gap-1.5 text-xs font-semibold px-2 py-1 rounded-lg", status.className)}>
                                         <StatusIcon className="w-3.5 h-3.5" />
                                         {status.label}
                                     </span>
@@ -71,19 +69,15 @@ export function OutgoingDocumentsCard({ className }: OutgoingDocumentsCardProps)
                                     </span>
                                 </div>
 
-                                <h4 className="text-sm font-medium text-[hsl(var(--v3-card-foreground))] line-clamp-2 mb-2 group-hover:text-[hsl(var(--v3-primary))] transition-colors">
+                                <h4 className="text-sm font-medium text-[hsl(var(--v3-card-foreground))] line-clamp-2 mb-3 group-hover:text-[hsl(var(--v3-primary))] transition-colors">
                                     {doc.title}
                                 </h4>
 
-                                <div className="text-xs text-[hsl(var(--v3-muted-foreground))]">
-                                    <span className="truncate">Gửi: {doc.to}</span>
-                                </div>
-
-                                <div className="flex items-center gap-2 mt-2 pt-2 border-t border-[hsl(var(--v3-border))]">
-                                    <span className="text-xs text-[hsl(var(--v3-muted-foreground))]">
-                                        Bước tiếp:
+                                <div className="flex items-center justify-between gap-2">
+                                    <span className="text-xs text-[hsl(var(--v3-muted-foreground))] font-medium">
+                                        Gửi: {doc.to}
                                     </span>
-                                    <span className="text-xs font-medium text-[hsl(var(--v3-primary))] truncate">
+                                    <span className="text-xs text-[hsl(var(--v3-info))] font-medium bg-[hsl(var(--v3-info))]/10 px-2 py-0.5 rounded">
                                         {doc.step}
                                     </span>
                                 </div>

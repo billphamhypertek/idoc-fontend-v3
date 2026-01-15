@@ -33,7 +33,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         const root = document.documentElement;
         root.style.setProperty("--v3-primary", theme.primary);
         root.style.setProperty("--v3-primary-hover", theme.primaryHover);
-        root.style.setProperty("--v3-sidebar-bg", theme.sidebar);
         root.style.setProperty("--v3-sidebar-active", theme.primary);
         root.style.setProperty("--v3-accent", theme.accent);
     };
