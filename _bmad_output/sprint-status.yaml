@@ -1,0 +1,258 @@
+# Sprint Status - ĐHTN v3 UI Redesign
+# generated: 2026-01-15
+# project: ĐHTN v3
+# tracking_system: file-system
+# story_location: _bmad_output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-01-15
+project: ĐHTN v3
+scope: Frontend Only - API unchanged
+migration_strategy: v3 folder - không ghi đè v2
+tracking_system: file-system
+story_location: _bmad_output/implementation-artifacts
+
+# ===========================================
+# DEVELOPMENT STATUS TRACKING
+# ===========================================
+
+development_status:
+  # ============================================
+  # Epic 1: Design System Foundation (4 stories)
+  # FRs: FR20, FR24 | NFRs: NFR9, NFR10, NFR14
+  # ============================================
+  epic-1: backlog
+  1-1-design-tokens: backlog
+  1-2-theme-system: backlog
+  1-3-atomic-components: backlog
+  1-4-ui-preferences-store: backlog
+  epic-1-retrospective: optional
+
+  # ============================================
+  # Epic 2: Core Layout Components (4 stories)
+  # FRs: FR6, FR7, FR8, FR9 | NFRs: NFR7, NFR8
+  # ============================================
+  epic-2: backlog
+  2-1-split-screen-layout: backlog
+  2-2-dashboard-layout: backlog
+  2-3-focus-mode-layout: backlog
+  2-4-page-layout: backlog
+  epic-2-retrospective: optional
+
+  # ============================================
+  # Epic 3: Role-Based Dashboards (6 stories)
+  # FRs: FR1, FR2, FR3, FR4, FR5 | NFRs: NFR5, NFR6, NFR7, NFR8
+  # ============================================
+  epic-3: backlog
+  3-1-lanh-dao-ban-dashboard: backlog
+  3-2-lanh-dao-don-vi-dashboard: backlog
+  3-3-lanh-dao-phong-dashboard: backlog
+  3-4-van-thu-dashboard: backlog
+  3-5-tro-ly-dashboard: backlog
+  3-6-admin-dashboard: backlog
+  epic-3-retrospective: optional
+
+  # ============================================
+  # Epic 4: Task Management v3 (8 stories)
+  # FRs: FR10, FR11, FR12, FR13 | NFRs: NFR7
+  # Pages: 21 | Components: 28
+  # ============================================
+  epic-4: backlog
+  4-1-task-dashboard-page: backlog
+  4-2-task-assignment-views: backlog
+  4-3-task-work-views: backlog
+  4-4-task-follow-views: backlog
+  4-5-task-combination-views: backlog
+  4-6-task-search-views: backlog
+  4-7-task-statistics-kpi: backlog
+  4-8-task-declarations: backlog
+  epic-4-retrospective: optional
+
+  # ============================================
+  # Epic 5: Document Workflow v3 (8 stories)
+  # FRs: FR14, FR15, FR16 | NFRs: NFR5
+  # Pages: 68 | Components: 87
+  # ============================================
+  epic-5: backlog
+  5-1-document-out-main-list: backlog
+  5-2-document-out-combine-directive: backlog
+  5-3-document-out-follow-opinion: backlog
+  5-4-document-out-search-detail: backlog
+  5-5-document-in-draft-handle: backlog
+  5-6-document-in-issued-list: backlog
+  5-7-document-in-search-important: backlog
+  5-8-document-internal-all: backlog
+  epic-5-retrospective: optional
+
+  # ============================================
+  # Epic 6: Reporting & Daily Reports (3 stories)
+  # FRs: FR17, FR18, FR19 | NFRs: NFR7
+  # Pages: 6
+  # ============================================
+  epic-6: backlog
+  6-1-government-reports: backlog
+  6-2-party-reports: backlog
+  6-3-report-submission-status: backlog
+  epic-6-retrospective: optional
+
+  # ============================================
+  # Epic 7: Calendar System v3 (4 stories)
+  # Pages: 10 | Components: 9
+  # ============================================
+  epic-7: backlog
+  7-1-business-calendar-views: backlog
+  7-2-org-calendar-list: backlog
+  7-3-room-booking: backlog
+  7-4-calendar-components: backlog
+  epic-7-retrospective: optional
+
+  # ============================================
+  # Epic 8: Archive & Document Records v3 (3 stories)
+  # Pages: 6 | Components: 9
+  # ============================================
+  epic-8: backlog
+  8-1-work-records: backlog
+  8-2-org-font-records: backlog
+  8-3-personal-records: backlog
+  epic-8-retrospective: optional
+
+  # ============================================
+  # Epic 9: Tracking & Search v3 (4 stories)
+  # Pages: 10
+  # ============================================
+  epic-9: backlog
+  9-1-track-incoming-docs: backlog
+  9-2-track-outgoing-docs: backlog
+  9-3-global-search: backlog
+  9-4-watch-list-management: backlog
+  epic-9-retrospective: optional
+
+  # ============================================
+  # Epic 10: Common UI Components v3 (6 stories)
+  # Components: 100+
+  # ============================================
+  epic-10: backlog
+  10-1-common-components-batch-1: backlog
+  10-2-common-components-batch-2: backlog
+  10-3-dialog-components-batch-1: backlog
+  10-4-dialog-components-batch-2: backlog
+  10-5-ui-component-overrides: backlog
+  10-6-shared-utilities: backlog
+  epic-10-retrospective: optional
+
+  # ============================================
+  # Epic 11: Performance & UX Polish (4 stories)
+  # FRs: FR21, FR22, FR23 | NFRs: NFR1-4, NFR6, NFR11
+  # ============================================
+  epic-11: backlog
+  11-1-lazy-loading-dynamic-imports: backlog
+  11-2-bundle-optimization: backlog
+  11-3-skeleton-loading-states: backlog
+  11-4-onboarding-accessibility: backlog
+  epic-11-retrospective: optional
+
+  # ============================================
+  # Epic 12: Admin & Utility Modules (DEFERRED)
+  # Status: User sẽ quyết định sau
+  # Pages: 33 | Components: 30+
+  # ============================================
+  epic-12: deferred
+  # Stories will be defined if Epic 12 is activated
+  epic-12-retrospective: optional
+
+# ===========================================
+# IMPLEMENTATION ORDER
+# ===========================================
+
+implementation_order:
+  phase_1_foundation:
+    sprints: "1-3"
+    epics: [1, 2, 10]
+    description: "Design System + Layouts + Common UI"
+  
+  phase_2_dashboards:
+    sprints: "4-5"
+    epics: [3]
+    description: "6 Role-based Dashboards"
+  
+  phase_3_core_features:
+    sprints: "6-10"
+    epics: [4, 5, 6]
+    parallel: true
+    description: "Task + Document + Reports"
+  
+  phase_4_secondary:
+    sprints: "11-13"
+    epics: [7, 8, 9]
+    parallel: true
+    description: "Calendar + Archive + Tracking"
+  
+  phase_5_polish:
+    sprints: "14-16"
+    epics: [11]
+    description: "Performance optimization"
+  
+  phase_6_optional:
+    sprints: "TBD"
+    epics: [12]
+    description: "Admin modules (if decided)"
+
+# ===========================================
+# STATISTICS
+# ===========================================
+
+statistics:
+  total_epics: 12
+  active_epics: 11
+  deferred_epics: 1
+  total_stories: 50
+  stories_backlog: 50
+  stories_ready: 0
+  stories_in_progress: 0
+  stories_review: 0
+  stories_done: 0
+  estimated_sprints: "12-16"
+  estimated_months: "6-8"
+
+# ===========================================
+# NOTES
+# ===========================================
+
+notes:
+  - date: "2026-01-15"
+    author: "Binh"
+    content: "Sprint planning initialized with 50 stories across 12 epics"
+  - date: "2026-01-15"
+    author: "System"
+    content: "Epic 12 marked as deferred - Admin/Vehicles/Delegate for later decision"
+  - date: "2026-01-15"
+    author: "System"
+    content: "6 roles identified: Lãnh đạo Ban, ĐV, Phòng, Văn thư, Trợ lý, Admin"
