@@ -47,7 +47,7 @@ export default function DocumentInReceivePage() {
     const hasSelection = selectedIds.length > 0;
 
     return (
-        <PageLayout activeModule="doc-in" activeSubMenu="receive">
+        <PageLayout activeModule="doc-in" activeSubMenu="doc-in">
             <div className="space-y-4">
                 {/* Page Header */}
                 <div className="flex items-center justify-between">
