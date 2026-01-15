@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ĐHTN v3 Design Tokens */
+@import "../styles/v3/tokens/index.css";
+
 /* BPMN.js styles */
 @import "bpmn-js/dist/assets/diagram-js.css";
 @import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
@@ -97,6 +100,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -129,12 +133,14 @@
   * {
     @apply border-border;
   }
+
   html {
     position: relative;
     min-height: 100%;
     font-family: Roboto, Arial, Helvetica, sans-serif;
     overflow: hidden;
   }
+
   body {
     @apply bg-background text-foreground;
     background-color: #fff;
@@ -234,6 +240,7 @@
     min-width: fit-content;
   }
 }
+
 button[data-state="checked"] {
   background-color: #2199e8 !important;
   border: #2199e8 !important;
@@ -242,18 +249,22 @@ button[data-state="checked"] {
 
 /* Task Monitor Table Custom Styles */
 .task-monitor-table thead {
-  background-color: #2563eb !important; /* blue-600 */
+  background-color: #2563eb !important;
+  /* blue-600 */
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .task-monitor-table thead tr {
-  border-bottom: 2px solid #1d4ed8 !important; /* blue-700 */
+  border-bottom: 2px solid #1d4ed8 !important;
+  /* blue-700 */
 }
 
 .task-monitor-table thead th {
-  background-color: #2563eb !important; /* blue-600 */
+  background-color: #2563eb !important;
+  /* blue-600 */
   color: #ffffff !important;
-  border-bottom: 1px solid #1d4ed8 !important; /* blue-700 */
+  border-bottom: 1px solid #1d4ed8 !important;
+  /* blue-700 */
 }
 
 .task-monitor-table thead th:first-child {
@@ -286,6 +297,7 @@ button[data-state="checked"] {
   color: #0000008a !important;
   opacity: 1;
 }
+
 .rpv-open__input-wrapper {
   display: none !important;
 }
@@ -297,6 +309,7 @@ div[aria-describedby="rpv-core__tooltip-body-get-file"] {
 .treeview-scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .treeview-scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -321,6 +334,7 @@ div[aria-describedby="rpv-core__tooltip-body-get-file"] {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.6;
   }

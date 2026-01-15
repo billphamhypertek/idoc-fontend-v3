@@ -1,0 +1,25 @@
+/**
+ * ĐHTN v3 Design Tokens - Index
+ * 
+ * Barrel file importing all token files.
+ * Import this file in globals.css to enable v3 tokens.
+ * 
+ * @usage @import './v3/tokens/index.css';
+ */
+
+/* Core design tokens */
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./effects.css";
+
+/**
+ * Token Usage Guide:
+ * 
+ * Colors:     hsl(var(--v3-color-primary))
+ * Typography: var(--v3-font-size-base)
+ * Spacing:    var(--v3-space-4)
+ * Effects:    var(--v3-shadow-md)
+ * 
+ * All tokens use --v3- prefix to avoid conflicts with v2.
+ */
