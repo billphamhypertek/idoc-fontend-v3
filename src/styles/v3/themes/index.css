@@ -1,0 +1,29 @@
+/**
+ * ĐHTN v3 Themes - Barrel Import
+ * 
+ * This file imports all v3 theme files in the correct order.
+ * Import this file in globals.css AFTER v3/tokens/index.css.
+ * 
+ * Theme Usage:
+ * - Light:         <html data-theme="light"> or no attribute (default)
+ * - Dark:          <html data-theme="dark">
+ * - High Contrast: <html data-theme="high-contrast">
+ * 
+ * Theme Persistence:
+ * Use localStorage key 'dhtn-v3-theme' for persistence.
+ * See src/lib/theme.ts for utility functions.
+ * 
+ * NOTE: v3 themes use [data-theme] attribute selector.
+ * v2 components use .dark class (separate system, not affected).
+ * 
+ * @see architecture.md#Design System Architecture
+ */
+
+/* Default (Light) theme - baseline values */
+@import "./default.css";
+
+/* Dark theme - dark mode overrides */
+@import "./dark.css";
+
+/* High Contrast theme - accessibility overrides */
+@import "./high-contrast.css";

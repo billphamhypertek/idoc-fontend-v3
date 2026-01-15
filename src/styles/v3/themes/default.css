@@ -1,0 +1,20 @@
+/**
+ * ĐHTN v3 Theme - Default (Light)
+ *
+ * Light theme selector for explicit theme switching.
+ * Baseline values are inherited from v3/tokens/colors.css.
+ * This file provides the data-theme="light" attribute selector.
+ *
+ * Usage: Add data-theme="light" to <html> element (or omit for default)
+ *
+ * NOTE: Light theme values are defined in tokens/colors.css.
+ * This selector ensures explicit light theme selection works correctly.
+ *
+ * @see architecture.md#Design System Architecture
+ */
+
+/* Default/Light theme - inherits from :root tokens */
+[data-theme="light"] {
+  /* Light theme uses baseline token values from colors.css
+   * No overrides needed - this selector enables explicit light selection */
+}
