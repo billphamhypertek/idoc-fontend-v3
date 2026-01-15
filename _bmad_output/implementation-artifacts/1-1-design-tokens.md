@@ -1,6 +1,6 @@
 # Story 1.1: Design Tokens Foundation
 
-Status: review
+Status: done
 
 ## Story
 
