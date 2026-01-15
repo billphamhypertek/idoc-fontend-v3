@@ -40,6 +40,13 @@
   /* 36px - Display */
 
   /* ========================================
+   * FONT SCALE MULTIPLIER
+   * Controlled by UIPrefsStore for user preference
+   * Usage: calc(var(--v3-font-size-base) * var(--v3-font-scale))
+   * ======================================== */
+  --v3-font-scale: 1;
+
+  /* ========================================
    * LINE HEIGHT
    * Optimized for readability
    * ======================================== */
