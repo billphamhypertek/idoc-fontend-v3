@@ -39,18 +39,18 @@ export function PendingActionsCard({ className }: PendingActionsCardProps) {
     const urgentCount = pendingTasks.filter((t) => t.priority === "urgent" || t.priority === "high").length;
 
     return (
-        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+        <div className={cn("v3-card flex flex-col", className)}>
             {/* Header with title inside */}
             <div className="shrink-0 flex items-center justify-between p-5">
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-error))]/10 rounded-xl">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-error))]/10 rounded-lg">
                         <ExclamationTriangleIcon className="w-5 h-5 text-[hsl(var(--v3-error))]" />
                     </div>
                     <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
                         Cần xử lý ngay
                     </h3>
                 </div>
-                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-xl transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-lg transition-colors">
                     {pendingTasks.length} việc
                     <ExternalLinkIcon className="w-4 h-4" />
                 </button>
@@ -67,7 +67,7 @@ export function PendingActionsCard({ className }: PendingActionsCardProps) {
                             <div
                                 key={task.id}
                                 className={cn(
-                                    "p-4 rounded-xl border hover:shadow-md transition-all cursor-pointer group",
+                                    "p-4 rounded-lg border hover:shadow-md transition-all cursor-pointer group",
                                     task.priority === "urgent"
                                         ? "border-[hsl(var(--v3-error))]/30 bg-[hsl(var(--v3-error))]/5"
                                         : "border-black/5 hover:border-[hsl(var(--v3-primary))]/30"

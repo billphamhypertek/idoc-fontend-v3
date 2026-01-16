@@ -24,9 +24,9 @@ function StatCard({
     iconClassName,
 }: StatCardProps) {
     return (
-        <div className={cn("rounded-2xl p-6 flex flex-col items-center text-center", gradientClasses)}>
+        <div className={cn("rounded-lg p-6 flex flex-col items-center text-center", gradientClasses)}>
             {/* Icon box at top */}
-            <div className={cn("w-14 h-14 rounded-xl flex items-center justify-center mb-3", iconBgClassName)}>
+            <div className={cn("w-14 h-14 rounded-md flex items-center justify-center mb-3", iconBgClassName)}>
                 <Icon className={cn("w-6 h-6", iconClassName)} />
             </div>
 
@@ -55,8 +55,18 @@ function StatCard({
 
 export function StatsSection() {
     return (
-        <div className="rounded-2xl bg-white p-6 shadow-[var(--v3-shadow-card)]">
+        <div className="v3-card p-6">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <StatCard
+                    title="Nhiệm vụ"
+                    value={stats.tasks.assigned + stats.tasks.pending}
+                    subtitle={`${stats.tasks.completed} đã hoàn thành`}
+                    icon={CheckCircledIcon}
+                    gradientClasses="bg-gradient-to-b from-pink-100 to-pink-50"
+                    iconBgClassName="bg-pink-200"
+                    iconClassName="text-pink-700"
+                />
+
                 <StatCard
                     title="Văn bản đến"
                     value={stats.documents.incoming.pending + stats.documents.incoming.processing + stats.documents.incoming.done}
@@ -75,16 +85,6 @@ export function StatsSection() {
                     gradientClasses="bg-gradient-to-b from-blue-100 to-blue-50"
                     iconBgClassName="bg-blue-200"
                     iconClassName="text-blue-700"
-                />
-
-                <StatCard
-                    title="Nhiệm vụ"
-                    value={stats.tasks.assigned + stats.tasks.pending}
-                    subtitle={`${stats.tasks.completed} đã hoàn thành`}
-                    icon={CheckCircledIcon}
-                    gradientClasses="bg-gradient-to-b from-pink-100 to-pink-50"
-                    iconBgClassName="bg-pink-200"
-                    iconClassName="text-pink-700"
                 />
 
                 <StatCard

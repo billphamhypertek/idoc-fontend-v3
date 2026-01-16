@@ -21,7 +21,7 @@ import {
 } from "@radix-ui/react-icons";
 import { Car } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { menuItems } from "@/data/mock-data";
+import { typedMenuGroups, MenuItem } from "@/data/mock-data";
 import {
     Tooltip,
     TooltipContent,
@@ -31,7 +31,7 @@ import {
 
 // Custom Car icon wrapper to match Radix icon sizing
 const CarIcon = ({ className }: { className?: string }) => (
-    <Car className={className} strokeWidth={1.5} />
+    <Car className={className} strokeWidth={2} />
 );
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -47,14 +47,23 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
     Share2: Share2Icon,
     Car: CarIcon,
     BookmarkFilled: BookmarkFilledIcon,
+    Gear: GearIcon,
+    Exit: ExitIcon,
 };
 
 interface SidebarProps {
     isOpen: boolean;
     onToggle: () => void;
+    activeModule?: string;
 }
 
-export function Sidebar({ isOpen, onToggle }: SidebarProps) {
+export function Sidebar({ isOpen, onToggle, activeModule = "dashboard" }: SidebarProps) {
+    // Get main menu items (excluding bottom group)
+    const mainMenuGroups = typedMenuGroups.filter(group => group.id !== "bottom");
+    // Get bottom group items
+    const bottomGroup = typedMenuGroups.find(group => group.id === "bottom");
+    const bottomItems: MenuItem[] = bottomGroup?.items || [];
+
     return (
         <TooltipProvider delayDuration={0}>
             {/* Overlay for mobile */}
@@ -106,32 +115,33 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                 {/* Navigation */}
                 <nav className="flex-1 overflow-y-auto py-2 px-4 scrollbar-thin">
                     <ul className="space-y-1">
-                        {menuItems.map((item) => {
+                        {mainMenuGroups.flatMap(group => group.items).map((item) => {
                             const Icon = iconMap[item.icon] || DashboardIcon;
+                            const isActive = item.id === activeModule;
                             const menuButton = (
                                 <Link
                                     href={item.href}
                                     className={cn(
-                                        "flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all group relative",
+                                        "flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all group relative",
                                         !isOpen && "lg:justify-center lg:px-3",
-                                        item.active
+                                        isActive
                                             ? "bg-[hsl(var(--v3-primary))] text-white shadow-md"
                                             : "text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-muted))] hover:text-[hsl(var(--v3-card-foreground))]"
                                     )}
                                 >
                                     <Icon className={cn(
-                                        "w-5 h-5 shrink-0",
-                                        item.active ? "text-white" : "text-[hsl(var(--v3-muted-foreground))] group-hover:text-[hsl(var(--v3-card-foreground))]"
+                                        "w-6 h-6 shrink-0",
+                                        isActive ? "text-white" : "text-[hsl(var(--v3-card-foreground))] group-hover:text-[hsl(var(--v3-card-foreground))]"
                                     )} />
                                     {isOpen && (
                                         <>
                                             <span className="flex-1 text-sm font-medium truncate">
                                                 {item.label}
                                             </span>
-                                            {item.badge && (
+                                            {"badge" in item && item.badge && (
                                                 <span className={cn(
                                                     "flex items-center justify-center h-5 min-w-[22px] px-1.5 text-xs font-semibold rounded-full",
-                                                    item.active
+                                                    isActive
                                                         ? "bg-white/20 text-white"
                                                         : "bg-[hsl(var(--v3-primary))] text-white"
                                                 )}>
@@ -140,7 +150,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                                             )}
                                         </>
                                     )}
-                                    {!isOpen && item.badge && (
+                                    {!isOpen && "badge" in item && item.badge && (
                                         <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center h-4 min-w-[16px] px-1 text-[10px] font-bold bg-[hsl(var(--v3-primary))] text-white rounded-full">
                                             {item.badge}
                                         </span>
@@ -155,7 +165,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                                             <TooltipTrigger asChild>{menuButton}</TooltipTrigger>
                                             <TooltipContent side="right" className="flex items-center gap-2">
                                                 {item.label}
-                                                {item.badge && (
+                                                {"badge" in item && item.badge && (
                                                     <span className="flex items-center justify-center h-4 min-w-[16px] px-1 text-[10px] font-semibold bg-[hsl(var(--v3-primary))] text-white rounded-full">
                                                         {item.badge}
                                                     </span>
@@ -171,51 +181,52 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
                     </ul>
                 </nav>
 
-                {/* Footer */}
+                {/* Footer - Bottom Group Items */}
                 <div className="border-t border-[hsl(var(--v3-border))] p-4 space-y-1">
-                    {!isOpen ? (
-                        <>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <button className="flex items-center justify-center w-full p-2.5 rounded-xl text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-muted))] hover:text-[hsl(var(--v3-card-foreground))] transition-colors">
-                                        <GearIcon className="w-5 h-5" />
-                                    </button>
-                                </TooltipTrigger>
-                                <TooltipContent side="right">Cài đặt</TooltipContent>
+                    {bottomItems.map((item) => {
+                        const Icon = iconMap[item.icon] || GearIcon;
+                        const isLogout = item.id === "logout";
+
+                        const footerButton = (
+                            <Link
+                                href={item.href}
+                                className={cn(
+                                    "flex items-center gap-3 w-full px-4 py-2.5 rounded-lg transition-colors",
+                                    !isOpen && "lg:justify-center lg:px-3",
+                                    isLogout
+                                        ? "text-[hsl(var(--v3-card-foreground))] hover:bg-[hsl(var(--v3-error))]/10 hover:text-[hsl(var(--v3-error))]"
+                                        : "text-[hsl(var(--v3-card-foreground))] hover:bg-[hsl(var(--v3-muted))] hover:text-[hsl(var(--v3-card-foreground))]"
+                                )}
+                            >
+                                <Icon className="w-6 h-6" />
+                                {isOpen && (
+                                    <span className="text-sm font-medium">{item.label}</span>
+                                )}
+                            </Link>
+                        );
+
+                        return !isOpen ? (
+                            <Tooltip key={item.id}>
+                                <TooltipTrigger asChild>{footerButton}</TooltipTrigger>
+                                <TooltipContent side="right">{item.label}</TooltipContent>
                             </Tooltip>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <button className="flex items-center justify-center w-full p-2.5 rounded-xl text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-error))]/10 hover:text-[hsl(var(--v3-error))] transition-colors">
-                                        <ExitIcon className="w-5 h-5" />
-                                    </button>
-                                </TooltipTrigger>
-                                <TooltipContent side="right">Đăng xuất</TooltipContent>
-                            </Tooltip>
-                        </>
-                    ) : (
-                        <>
-                            <button className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-muted))] hover:text-[hsl(var(--v3-card-foreground))] transition-colors">
-                                <GearIcon className="w-5 h-5" />
-                                <span className="text-sm font-medium">Cài đặt</span>
-                            </button>
-                            <button className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-error))]/10 hover:text-[hsl(var(--v3-error))] transition-colors">
-                                <ExitIcon className="w-5 h-5" />
-                                <span className="text-sm font-medium">Đăng xuất</span>
-                            </button>
-                        </>
-                    )}
+                        ) : (
+                            <div key={item.id}>{footerButton}</div>
+                        );
+                    })}
                 </div>
             </aside>
         </TooltipProvider>
     );
 }
 
+
 // Hamburger Menu Button for Header
 export function SidebarToggle({ onClick, isOpen }: { onClick: () => void; isOpen: boolean }) {
     return (
         <button
             onClick={onClick}
-            className="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-[hsl(var(--v3-muted))] transition-colors"
+            className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors"
             aria-label={isOpen ? "Đóng menu" : "Mở menu"}
         >
             <HamburgerMenuIcon className="w-5 h-5 text-[hsl(var(--v3-card-foreground))]" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { PageLayout } from "@/components/documents/page-layout";
 import { DocumentFilters } from "@/components/documents/document-filters";
 import { DocumentTable, DocumentItem } from "@/components/documents/document-table";
@@ -11,6 +12,7 @@ import {
 } from "@radix-ui/react-icons";
 
 export default function DocumentInImportantPage() {
+    const router = useRouter();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [data, setData] = useState<DocumentItem[]>(documentInImportant);
 
@@ -23,29 +25,14 @@ export default function DocumentInImportantPage() {
     };
 
     const handleRowClick = (item: DocumentItem) => {
-        console.log("Row clicked:", item);
+        router.push(`/document-in/${item.id}`);
     };
 
     return (
         <PageLayout activeModule="doc-in" activeSubMenu="important">
             <div className="space-y-4">
-                {/* Page Header */}
-                <div className="flex items-center justify-between">
-                    <div>
-                        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-1">
-                            <span>Văn bản đến</span>
-                            <span>/</span>
-                            <span className="text-gray-900 font-medium">Văn bản quan trọng</span>
-                        </nav>
-                    </div>
-                </div>
-
-                {/* Filters */}
-                <DocumentFilters
-                    searchPlaceholder="Tìm kiếm Số/Ký hiệu | Trích yếu"
-                    showDateFilter={true}
-                    showAdvancedSearch={true}
-                />
+                {/* Header & Filters */}
+                <h1 className="text-xl font-semibold text-[hsl(var(--v3-card-foreground))]">Văn bản quan trọng</h1>
 
                 {/* Info Bar */}
                 <div className="flex items-center justify-between">
@@ -59,7 +46,12 @@ export default function DocumentInImportantPage() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <button className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors">
+                        <DocumentFilters
+                            searchPlaceholder="Tìm kiếm Số/Ký hiệu | Trích yếu"
+                            showDateFilter={true}
+                            showAdvancedSearch={true}
+                        />
+                        <button className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[hsl(var(--v3-border))] text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-muted))] transition-colors">
                             <ReloadIcon className="w-4 h-4" />
                         </button>
                     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { PageLayout } from "@/components/documents/page-layout";
 import { DocumentFilters } from "@/components/documents/document-filters";
 import { DocumentTable, DocumentItem } from "@/components/documents/document-table";
@@ -12,6 +13,7 @@ import {
 import { FileDown } from "lucide-react";
 
 export default function DocumentInSearchPage() {
+    const router = useRouter();
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
     const [data, setData] = useState<DocumentItem[]>(documentInReceive);
     const [searchResults, setSearchResults] = useState<DocumentItem[]>(documentInReceive);
@@ -30,7 +32,7 @@ export default function DocumentInSearchPage() {
     };
 
     const handleRowClick = (item: DocumentItem) => {
-        console.log("Row clicked:", item);
+        router.push(`/document-in/${item.id}`);
     };
 
     const handleSearch = (value: string) => {
@@ -66,40 +68,30 @@ export default function DocumentInSearchPage() {
     return (
         <PageLayout activeModule="doc-in" activeSubMenu="search">
             <div className="space-y-4">
-                {/* Page Header */}
-                <div className="flex items-center justify-between">
-                    <div>
-                        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-1">
-                            <span>Văn bản đến</span>
-                            <span>/</span>
-                            <span className="text-gray-900 font-medium">Tra cứu văn bản</span>
-                        </nav>
-                    </div>
-                </div>
-
-                {/* Filters */}
-                <DocumentFilters
-                    searchPlaceholder="Tìm kiếm Số/Ký hiệu | Trích yếu | Nơi gửi"
-                    showDateFilter={true}
-                    showAdvancedSearch={true}
-                    onSearchChange={handleSearch}
-                    onAdvancedSearch={handleAdvancedSearch}
-                />
+                {/* Header & Filters */}
+                <h1 className="text-xl font-semibold text-[hsl(var(--v3-card-foreground))]">Tra cứu văn bản</h1>
 
                 {/* Results Info Bar */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <span className="text-sm text-gray-600">
-                            Tìm thấy: <strong className="text-gray-900">{searchResults.length}</strong> kết quả
+                        <span className="text-sm text-[hsl(var(--v3-muted-foreground))]">
+                            Tìm thấy: <strong className="text-[hsl(var(--v3-card-foreground))]">{searchResults.length}</strong> kết quả
                         </span>
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <button className="inline-flex items-center gap-2 h-9 px-4 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors">
+                        <DocumentFilters
+                            searchPlaceholder="Tìm kiếm Số/Ký hiệu | Trích yếu | Nơi gửi"
+                            showDateFilter={true}
+                            showAdvancedSearch={true}
+                            onSearchChange={handleSearch}
+                            onAdvancedSearch={handleAdvancedSearch}
+                        />
+                        <button className="inline-flex items-center gap-2 h-9 px-4 rounded-lg border border-[hsl(var(--v3-border))] text-[hsl(var(--v3-muted-foreground))] text-sm font-medium hover:bg-[hsl(var(--v3-muted))] transition-colors">
                             <FileDown className="w-4 h-4" />
                             Xuất Excel
                         </button>
-                        <button className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors">
+                        <button className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[hsl(var(--v3-border))] text-[hsl(var(--v3-muted-foreground))] hover:bg-[hsl(var(--v3-muted))] transition-colors">
                             <ReloadIcon className="w-4 h-4" />
                         </button>
                     </div>

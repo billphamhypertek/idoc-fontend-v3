@@ -117,12 +117,12 @@ export function DocumentTable({
     };
 
     return (
-        <div className={cn("bg-white rounded-xl border border-gray-200 overflow-hidden", className)}>
+        <div className={cn("v3-card overflow-hidden", className)}>
             {/* Table */}
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead>
-                        <tr className="bg-gray-50 border-b border-gray-200">
+                        <tr className="bg-white border-b border-[hsl(var(--v3-border))]">
                             {/* Checkbox */}
                             {showCheckbox && (
                                 <th className="w-12 px-4 py-3 text-center">
@@ -135,7 +135,7 @@ export function DocumentTable({
                                 </th>
                             )}
                             {/* STT */}
-                            <th className="w-14 px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">
+                            <th className="w-14 px-4 py-3.5 text-center text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider">
                                 STT
                             </th>
                             {/* Star */}
@@ -149,79 +149,79 @@ export function DocumentTable({
                                 </button>
                             </th>
                             {/* Số/Ký hiệu */}
-                            <th className="min-w-[100px] px-4 py-3 text-left">
+                            <th className="min-w-[100px] px-4 py-3.5 text-left">
                                 <button
                                     onClick={() => handleSort("number")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Số/Ký hiệu
                                     <SortIcon field="number" />
                                 </button>
                             </th>
                             {/* Loại VB */}
-                            <th className="min-w-[100px] px-4 py-3 text-left">
+                            <th className="min-w-[100px] px-4 py-3.5 text-left">
                                 <button
                                     onClick={() => handleSort("docType")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Loại VB
                                     <SortIcon field="docType" />
                                 </button>
                             </th>
                             {/* Người tạo */}
-                            <th className="min-w-[120px] px-4 py-3 text-left">
+                            <th className="min-w-[120px] px-4 py-3.5 text-left">
                                 <button
                                     onClick={() => handleSort("creator")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Người tạo
                                     <SortIcon field="creator" />
                                 </button>
                             </th>
                             {/* Ngày BH */}
-                            <th className="min-w-[100px] px-4 py-3 text-left">
+                            <th className="min-w-[100px] px-4 py-3.5 text-left">
                                 <button
                                     onClick={() => handleSort("date")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Ngày BH
                                     <SortIcon field="date" />
                                 </button>
                             </th>
                             {/* Trích yếu */}
-                            <th className="min-w-[300px] px-4 py-3 text-left">
+                            <th className="min-w-[300px] px-4 py-3.5 text-left">
                                 <button
                                     onClick={() => handleSort("title")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Trích yếu
                                     <SortIcon field="title" />
                                 </button>
                             </th>
                             {/* Trạng thái */}
-                            <th className="min-w-[120px] px-4 py-3 text-center">
+                            <th className="min-w-[120px] px-4 py-3.5 text-center">
                                 <button
                                     onClick={() => handleSort("status")}
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 uppercase hover:text-gray-900"
+                                    className="inline-flex items-center gap-1 text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider hover:text-[hsl(var(--v3-primary))]"
                                 >
                                     Trạng thái
                                     <SortIcon field="status" />
                                 </button>
                             </th>
                             {/* File */}
-                            <th className="w-16 px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">
+                            <th className="w-16 px-4 py-3.5 text-center text-xs font-bold text-[hsl(var(--v3-card-foreground))] uppercase tracking-wider">
                                 File
                             </th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody className="divide-y divide-[hsl(var(--v3-border))]">
                         {paginatedData.map((item, index) => (
                             <tr
                                 key={item.id}
                                 onClick={() => onRowClick?.(item)}
                                 className={cn(
-                                    "hover:bg-blue-50/50 cursor-pointer transition-colors",
-                                    selectedIds.includes(item.id) && "bg-blue-50",
+                                    "hover:bg-[hsl(var(--v3-muted))]/50 cursor-pointer transition-colors",
+                                    selectedIds.includes(item.id) && "bg-[hsl(var(--v3-primary))]/5",
                                     getPriorityColor(item.priority)
                                 )}
                             >
@@ -237,7 +237,7 @@ export function DocumentTable({
                                     </td>
                                 )}
                                 {/* STT */}
-                                <td className="px-4 py-3 text-center text-sm text-gray-600">
+                                <td className="px-4 py-3 text-center text-sm text-[hsl(var(--v3-muted-foreground))]">
                                     {(currentPage - 1) * itemsPerPage + index + 1}
                                 </td>
                                 {/* Star */}
@@ -249,21 +249,21 @@ export function DocumentTable({
                                         {item.isImportant ? (
                                             <StarFilledIcon className="w-4 h-4 text-amber-400" />
                                         ) : (
-                                            <StarIcon className="w-4 h-4 text-gray-300 hover:text-amber-400" />
+                                            <StarIcon className="w-4 h-4 text-[hsl(var(--v3-border))] hover:text-amber-400" />
                                         )}
                                     </button>
                                 </td>
                                 {/* Số/Ký hiệu */}
-                                <td className="px-4 py-3 text-sm font-medium text-gray-900">{item.number}</td>
+                                <td className="px-4 py-3 text-sm font-medium text-[hsl(var(--v3-card-foreground))]">{item.number}</td>
                                 {/* Loại VB */}
-                                <td className="px-4 py-3 text-sm text-gray-600">{item.docType || "Công văn"}</td>
+                                <td className="px-4 py-3 text-sm text-[hsl(var(--v3-muted-foreground))]">{item.docType || "Công văn"}</td>
                                 {/* Người tạo */}
-                                <td className="px-4 py-3 text-sm text-gray-600">{item.creator || "-"}</td>
+                                <td className="px-4 py-3 text-sm text-[hsl(var(--v3-muted-foreground))]">{item.creator || "-"}</td>
                                 {/* Ngày BH */}
-                                <td className="px-4 py-3 text-sm text-gray-600">{item.date}</td>
+                                <td className="px-4 py-3 text-sm text-[hsl(var(--v3-muted-foreground))]">{item.date}</td>
                                 {/* Trích yếu */}
                                 <td className="px-4 py-3">
-                                    <p className="text-sm text-gray-900 line-clamp-2" title={item.title}>
+                                    <p className="text-sm text-[hsl(var(--v3-card-foreground))] line-clamp-2" title={item.title}>
                                         {item.title}
                                     </p>
                                 </td>
@@ -281,8 +281,8 @@ export function DocumentTable({
                         ))}
                         {paginatedData.length === 0 && (
                             <tr>
-                                <td colSpan={10} className="px-4 py-12 text-center text-gray-500">
-                                    <FileIcon className="w-12 h-12 mx-auto text-gray-300 mb-3" />
+                                <td colSpan={10} className="px-4 py-12 text-center text-[hsl(var(--v3-muted-foreground))]">
+                                    <FileIcon className="w-12 h-12 mx-auto text-[hsl(var(--v3-border))] mb-3" />
                                     <p className="text-sm">Không có dữ liệu</p>
                                 </td>
                             </tr>
@@ -292,8 +292,8 @@ export function DocumentTable({
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-gray-50">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center justify-between px-4 py-3 border-t border-[hsl(var(--v3-border))] bg-white">
+                <div className="flex items-center gap-2 text-sm text-[hsl(var(--v3-muted-foreground))]">
                     <span>Hiển thị</span>
                     <select
                         value={itemsPerPage}
@@ -301,7 +301,7 @@ export function DocumentTable({
                             setItemsPerPage(Number(e.target.value));
                             setCurrentPage(1);
                         }}
-                        className="h-8 px-2 rounded border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v3-primary))]/20"
+                        className="h-8 px-2 rounded border border-[hsl(var(--v3-border))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--v3-primary))]/20"
                     >
                         {itemsPerPageOptions.map((option) => (
                             <option key={option} value={option}>
@@ -347,6 +347,6 @@ export function DocumentTable({
                     </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

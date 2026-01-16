@@ -2,7 +2,7 @@
 
 export const currentUser = {
     id: "1",
-    name: "Nguyễn Văn An",
+    name: "Vũ Ngọc Thiềm",
     role: "Lãnh đạo Ban",
     avatar: "",
     department: "Ban Cơ yếu Chính phủ",
@@ -94,22 +94,28 @@ export const menuGroups = [
                 icon: "Share2",
                 href: "/delegate",
             },
-        ],
-    },
-    {
-        id: "admin",
-        items: [
-            {
-                id: "vehicles",
-                label: "Quản lý xe",
-                icon: "Car",
-                href: "/vehicles",
-            },
             {
                 id: "labels",
                 label: "Quản lý nhãn",
                 icon: "BookmarkFilled",
                 href: "/labels",
+            },
+        ],
+    },
+    {
+        id: "bottom",
+        items: [
+            {
+                id: "settings",
+                label: "Cài đặt",
+                icon: "Gear",
+                href: "/admin",
+            },
+            {
+                id: "logout",
+                label: "Đăng xuất",
+                icon: "Exit",
+                href: "/login",
             },
         ],
     },
@@ -125,8 +131,19 @@ export interface MenuItem {
     active?: boolean;
 }
 
-// Flatten menu items for backward compatibility
-export const menuItems: MenuItem[] = menuGroups.flatMap(group => group.items) as MenuItem[];
+// Menu group type
+export interface MenuGroup {
+    id: string;
+    items: MenuItem[];
+}
+
+// Type assertion for menuGroups
+export const typedMenuGroups: MenuGroup[] = menuGroups as MenuGroup[];
+
+// Flatten menu items for backward compatibility (excluding bottom group)
+export const menuItems: MenuItem[] = typedMenuGroups
+    .filter(group => group.id !== "bottom")
+    .flatMap(group => group.items);
 
 // Sub-menu items for each module
 export const subMenuItems: Record<string, { id: string; label: string; href: string }[]> = {
@@ -135,7 +152,7 @@ export const subMenuItems: Record<string, { id: string; label: string; href: str
         { id: "unit", label: "Thống kê phòng ban", href: "/?tab=unit" },
     ],
     "doc-in": [
-        { id: "receive", label: "Tiếp nhận văn bản", href: "/document-in/receive" },
+        { id: "doc-in", label: "Tiếp nhận văn bản", href: "/document-in" },
         { id: "main", label: "Xử lý chính", href: "/document-in/main" },
         { id: "coordinate", label: "Phối hợp", href: "/document-in/coordinate" },
         { id: "info", label: "Nhận để biết", href: "/document-in/info" },
@@ -144,13 +161,23 @@ export const subMenuItems: Record<string, { id: string; label: string; href: str
         { id: "search", label: "Tra cứu văn bản", href: "/document-in/search" },
     ],
     "doc-out": [
-        { id: "draft", label: "Soạn văn bản", href: "/document-out/draft" },
-        { id: "pending", label: "Chờ duyệt", href: "/document-out/pending" },
-        { id: "approved", label: "Đã duyệt", href: "/document-out/approved" },
-        { id: "issued", label: "Đã phát hành", href: "/document-out/issued" },
-        { id: "search", label: "Tra cứu", href: "/document-out/search" },
+        { id: "doc-out", label: "Danh sách văn bản", href: "/document-out" },
+        { id: "main", label: "Xử lý chính", href: "/document-out/main" },
+        { id: "combine", label: "Phối hợp", href: "/document-out/combine" },
+        { id: "know", label: "Nhận để biết", href: "/document-out/know" },
+        { id: "important", label: "Văn bản quan trọng", href: "/document-out/important" },
+        { id: "opinion", label: "Cho ý kiến", href: "/document-out/opinion" },
+        { id: "search", label: "Tra cứu văn bản", href: "/document-out/search" },
+    ],
+    "doc-internal": [
+        { id: "doc-internal", label: "Danh sách văn bản", href: "/document-internal" },
+        { id: "register", label: "Đăng ký", href: "/document-internal/register" },
+        { id: "approve", label: "Chờ duyệt", href: "/document-internal/approve" },
+        { id: "publish", label: "Phát hành", href: "/document-internal/publish" },
+        { id: "search", label: "Tra cứu", href: "/document-internal/search" },
     ],
     tasks: [
+        { id: "tasks", label: "Thống kê công việc", href: "/tasks" },
         { id: "assigned", label: "Nhiệm vụ được giao", href: "/tasks/assigned" },
         { id: "created", label: "Nhiệm vụ đã giao", href: "/tasks/created" },
         { id: "following", label: "Đang theo dõi", href: "/tasks/following" },

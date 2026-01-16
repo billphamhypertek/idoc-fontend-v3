@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" suppressHydrationWarning>
-      <body className={`${manrope.variable} font-sans antialiased bg-[hsl(var(--v3-background))]`}>
+      <body className={`${manrope.variable} antialiased bg-[hsl(var(--v3-background))]`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>

@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* Override Tailwind's defaults to use our design tokens */
+@theme {
+  --font-sans:
+    var(--font-manrope), "Manrope", "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* Larger font sizes for better readability */
+  --font-size-xs: 0.9375rem;
+  /* 15px instead of 12px */
+  --font-size-sm: 1rem;
+  /* 16px instead of 14px */
+  --font-size-base: 1.0625rem;
+  /* 17px instead of 16px */
+  --font-size-lg: 1.125rem;
+  /* 18px instead of 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px instead of 20px */
+}
+
 /*
  * ĐHTN v3 Prototype - Global Styles
  * Matdash-inspired Enterprise Look
@@ -15,16 +34,172 @@
     @apply bg-[hsl(var(--v3-background))] text-[hsl(var(--v3-card-foreground))];
     font-family: var(--font-manrope), var(--v3-font-sans);
     font-size: var(--v3-font-size-base);
-    line-height: 1.6;
+    font-weight: 450;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* Focus outline for accessibility */
   :focus-visible {
     @apply outline-none ring-2 ring-[hsl(var(--v3-primary))] ring-offset-2;
   }
+
+  /* Global select styling with proper icon spacing */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    padding-right: 2.5rem;
+  }
 }
 
 @layer utilities {
+  /* ============================================
+   * MatDash-style Card System
+   * ============================================ */
+
+  /* Base Card - Clean white with subtle shadow, no border */
+  .v3-card {
+    @apply bg-white rounded-[var(--v3-radius-lg)];
+    box-shadow: var(--v3-shadow-card);
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .v3-card:hover {
+    box-shadow: var(--v3-shadow-card-hover);
+  }
+
+  /* Featured Card - Larger radius, no border */
+  .v3-card-featured {
+    @apply bg-white rounded-[var(--v3-radius-xl)];
+    box-shadow: var(--v3-shadow-md);
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .v3-card-featured:hover {
+    box-shadow: var(--v3-shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* ============================================
+   * Gradient Card Backgrounds (MatDash style)
+   * ============================================ */
+  .v3-card-gradient-pink {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-pink-from)) 0%,
+      hsl(var(--v3-gradient-pink-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  .v3-card-gradient-violet {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-violet-from)) 0%,
+      hsl(var(--v3-gradient-violet-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  .v3-card-gradient-blue {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-blue-from)) 0%,
+      hsl(var(--v3-gradient-blue-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  .v3-card-gradient-green {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-green-from)) 0%,
+      hsl(var(--v3-gradient-green-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  .v3-card-gradient-yellow {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-yellow-from)) 0%,
+      hsl(var(--v3-gradient-yellow-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  .v3-card-gradient-cyan {
+    @apply rounded-[var(--v3-radius-lg)] border-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--v3-gradient-cyan-from)) 0%,
+      hsl(var(--v3-gradient-cyan-to)) 100%
+    );
+    box-shadow: none;
+  }
+
+  /* ============================================
+   * Icon Containers (MatDash style)
+   * ============================================ */
+  .v3-icon-box {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+  }
+
+  .v3-icon-box-pink {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-pink));
+    color: hsl(var(--v3-icon-pink));
+  }
+
+  .v3-icon-box-violet {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-violet));
+    color: hsl(var(--v3-icon-violet));
+  }
+
+  .v3-icon-box-blue {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-blue));
+    color: hsl(var(--v3-icon-blue));
+  }
+
+  .v3-icon-box-green {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-green));
+    color: hsl(var(--v3-icon-green));
+  }
+
+  .v3-icon-box-yellow {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-yellow));
+    color: hsl(var(--v3-icon-yellow));
+  }
+
+  .v3-icon-box-cyan {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    transition: transform 0.2s ease;
+    background-color: hsl(var(--v3-icon-bg-cyan));
+    color: hsl(var(--v3-icon-cyan));
+  }
+
   /* Custom scrollbar */
   .scrollbar-thin {
     scrollbar-width: thin;

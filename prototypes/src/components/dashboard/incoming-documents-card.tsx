@@ -46,18 +46,18 @@ export function IncomingDocumentsCard({ className }: IncomingDocumentsCardProps)
     const pendingCount = incomingDocuments.filter((d) => d.status === "pending").length;
 
     return (
-        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+        <div className={cn("v3-card flex flex-col", className)}>
             {/* Header with title inside */}
             <div className="shrink-0 flex items-center justify-between p-5">
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-info))]/10 rounded-xl">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-info))]/10 rounded-lg">
                         <DownloadIcon className="w-5 h-5 text-[hsl(var(--v3-info))]" />
                     </div>
                     <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
                         Văn bản đến
                     </h3>
                 </div>
-                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-xl transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-lg transition-colors">
                     {incomingDocuments.length} văn bản
                     <ExternalLinkIcon className="w-4 h-4" />
                 </button>
@@ -74,7 +74,7 @@ export function IncomingDocumentsCard({ className }: IncomingDocumentsCardProps)
                             <div
                                 key={doc.id}
                                 className={cn(
-                                    "p-4 rounded-xl border hover:shadow-md transition-all cursor-pointer group",
+                                    "p-4 rounded-lg border hover:shadow-md transition-all cursor-pointer group",
                                     doc.priority === "urgent"
                                         ? "border-[hsl(var(--v3-error))]/30 bg-[hsl(var(--v3-error))]/5"
                                         : "border-black/5 hover:border-[hsl(var(--v3-primary))]/30"

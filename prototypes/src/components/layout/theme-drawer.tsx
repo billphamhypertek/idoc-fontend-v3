@@ -33,7 +33,7 @@ export function ThemeDrawer({ isOpen, onClose }: ThemeDrawerProps) {
                 {/* Header */}
                 <div className="flex items-center justify-between p-5 border-b border-[hsl(var(--v3-border))]">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[hsl(var(--v3-primary))]/10 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--v3-primary))]/10 flex items-center justify-center">
                             <MixerHorizontalIcon className="w-5 h-5 text-[hsl(var(--v3-primary))]" />
                         </div>
                         <div>
@@ -47,7 +47,7 @@ export function ThemeDrawer({ isOpen, onClose }: ThemeDrawerProps) {
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-xl hover:bg-[hsl(var(--v3-muted))] transition-colors"
+                        className="p-2 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors"
                     >
                         <Cross2Icon className="w-5 h-5 text-[hsl(var(--v3-muted-foreground))]" />
                     </button>
@@ -65,7 +65,7 @@ export function ThemeDrawer({ isOpen, onClose }: ThemeDrawerProps) {
                                 key={palette.id}
                                 onClick={() => setTheme(palette)}
                                 className={cn(
-                                    "relative flex flex-col items-center gap-2 p-3 rounded-xl border transition-all hover:shadow-md",
+                                    "relative flex flex-col items-center gap-2 p-3 rounded-lg border transition-all hover:shadow-md",
                                     currentTheme.id === palette.id
                                         ? "border-[hsl(var(--v3-primary))] bg-[hsl(var(--v3-primary))]/5 shadow-md"
                                         : "border-[hsl(var(--v3-border))] hover:border-[hsl(var(--v3-muted-foreground))]/30"
@@ -98,10 +98,10 @@ export function ThemeDrawer({ isOpen, onClose }: ThemeDrawerProps) {
                             Xem trước
                         </h3>
                         <div className="flex gap-3">
-                            <button className="flex-1 py-2.5 text-sm font-semibold text-white bg-[hsl(var(--v3-primary))] rounded-xl hover:bg-[hsl(var(--v3-primary-hover))] transition-colors shadow-md">
+                            <button className="flex-1 py-2.5 text-sm font-semibold text-white bg-[hsl(var(--v3-primary))] rounded-lg hover:bg-[hsl(var(--v3-primary-hover))] transition-colors shadow-md">
                                 Nút chính
                             </button>
-                            <button className="flex-1 py-2.5 text-sm font-semibold text-[hsl(var(--v3-primary))] bg-[hsl(var(--v3-primary))]/10 rounded-xl hover:bg-[hsl(var(--v3-primary))]/20 transition-colors">
+                            <button className="flex-1 py-2.5 text-sm font-semibold text-[hsl(var(--v3-primary))] bg-[hsl(var(--v3-primary))]/10 rounded-lg hover:bg-[hsl(var(--v3-primary))]/20 transition-colors">
                                 Nút phụ
                             </button>
                         </div>

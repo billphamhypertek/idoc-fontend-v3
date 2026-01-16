@@ -29,18 +29,18 @@ interface AssignedTasksCardProps {
 
 export function AssignedTasksCard({ className }: AssignedTasksCardProps) {
     return (
-        <div className={cn("bg-white rounded-xl shadow-[var(--v3-shadow-card)] flex flex-col", className)}>
+        <div className={cn("v3-card flex flex-col", className)}>
             {/* Header with title inside */}
             <div className="shrink-0 flex items-center justify-between p-5">
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-success))]/10 rounded-xl">
+                    <div className="flex items-center justify-center w-10 h-10 bg-[hsl(var(--v3-success))]/10 rounded-lg">
                         <CheckCircledIcon className="w-5 h-5 text-[hsl(var(--v3-success))]" />
                     </div>
                     <h3 className="text-base font-semibold text-[hsl(var(--v3-card-foreground))]">
                         Nhiệm vụ đang theo dõi
                     </h3>
                 </div>
-                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-xl transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-[hsl(var(--v3-primary))] hover:bg-[hsl(var(--v3-primary))]/10 rounded-lg transition-colors">
                     {assignedTasks.length} nhiệm vụ
                     <ExternalLinkIcon className="w-4 h-4" />
                 </button>
@@ -54,7 +54,7 @@ export function AssignedTasksCard({ className }: AssignedTasksCardProps) {
                         return (
                             <div
                                 key={task.id}
-                                className="p-4 rounded-xl border border-black/5 hover:shadow-md hover:border-[hsl(var(--v3-primary))]/30 transition-all cursor-pointer group"
+                                className="p-4 rounded-lg border border-black/5 hover:shadow-md hover:border-[hsl(var(--v3-primary))]/30 transition-all cursor-pointer group"
                             >
                                 <div className="flex items-start justify-between gap-2 mb-2">
                                     <span className={cn("text-xs font-semibold", status.className)}>

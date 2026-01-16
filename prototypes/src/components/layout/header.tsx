@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { BellIcon, MixerHorizontalIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { BellIcon, MixerHorizontalIcon } from "@radix-ui/react-icons";
 import { currentUser, subMenuItems } from "@/data/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -56,7 +56,7 @@ export function Header({
                             key={item.id}
                             href={item.href}
                             className={cn(
-                                "shrink-0 px-4 py-2 text-sm font-medium rounded-xl transition-colors whitespace-nowrap",
+                                "shrink-0 px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                                 activeSubMenu === item.id
                                     ? "text-white bg-[hsl(var(--v3-primary))] shadow-md"
                                     : "text-[hsl(var(--v3-muted-foreground))] hover:text-[hsl(var(--v3-card-foreground))] hover:bg-[hsl(var(--v3-muted))]"
@@ -69,19 +69,11 @@ export function Header({
 
                 {/* Right: Search + Actions */}
                 <div className="shrink-0 flex items-center gap-3 ml-4">
-                    {/* Search */}
-                    <div className="hidden md:flex items-center gap-2 px-4 py-2.5 bg-[hsl(var(--v3-muted))] rounded-xl w-72">
-                        <MagnifyingGlassIcon className="w-5 h-5 text-[hsl(var(--v3-muted-foreground))]" />
-                        <input
-                            type="text"
-                            placeholder="Tìm kiếm..."
-                            className="flex-1 bg-transparent text-sm outline-none placeholder:text-[hsl(var(--v3-muted-foreground))]"
-                        />
-                    </div>
+
 
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <button className="relative flex items-center justify-center w-10 h-10 rounded-xl hover:bg-[hsl(var(--v3-muted))] transition-colors">
+                            <button className="relative flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors">
                                 <BellIcon className="w-5 h-5 text-[hsl(var(--v3-muted-foreground))]" />
                                 <span className="absolute top-1.5 right-1.5 flex items-center justify-center w-4 h-4 text-[10px] font-bold text-white bg-[hsl(var(--v3-primary))] rounded-full">
                                     5
@@ -95,7 +87,7 @@ export function Header({
                         <TooltipTrigger asChild>
                             <button
                                 onClick={() => setThemeDrawerOpen(true)}
-                                className="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-[hsl(var(--v3-muted))] transition-colors"
+                                className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors"
                             >
                                 <MixerHorizontalIcon className="w-5 h-5 text-[hsl(var(--v3-muted-foreground))]" />
                             </button>
@@ -105,7 +97,7 @@ export function Header({
 
                     <div className="w-px h-8 bg-[hsl(var(--v3-border))] mx-1" />
 
-                    <button className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[hsl(var(--v3-muted))] transition-colors">
+                    <button className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[hsl(var(--v3-muted))] transition-colors">
                         <Avatar className="h-8 w-8 ring-2 ring-[hsl(var(--v3-border))]">
                             <AvatarImage src={currentUser.avatar} alt={currentUser.name} />
                             <AvatarFallback className="text-xs bg-[hsl(var(--v3-primary))] text-white font-semibold">

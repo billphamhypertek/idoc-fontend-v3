@@ -29,18 +29,18 @@
   --v3-info: 199 89% 45%;
   /* #0891b2 */
 
-  /* Surfaces - Matdash style */
-  --v3-background: 210 15% 97%;
-  /* Very light grey */
+  /* Surfaces - Matdash style (teal-tinted background) */
+  --v3-background: 180 20% 94%;
+  /* Teal-tinted light background like Matdash */
   --v3-card: 0 0% 100%;
   --v3-card-foreground: 215 25% 20%;
-  /* #2a3547 - darker for readability */
-  --v3-border: 210 10% 92%;
-  /* Very light border like Matdash */
-  --v3-muted: 210 14% 96%;
-  /* #f5f7f9 */
-  --v3-muted-foreground: 215 15% 45%;
-  /* #5a6a7a - darker muted text */
+  /* #2a3547 - dark text for readability */
+  --v3-border: 180 10% 94%;
+  /* Very light, almost invisible border like MatDash */
+  --v3-muted: 180 15% 95%;
+  /* Teal-tinted muted background */
+  --v3-muted-foreground: 215 15% 40%;
+  /* Darker muted text for better contrast */
 
   /* Sidebar - White with subtle border */
   --v3-sidebar-bg: 0 0% 100%;
@@ -58,38 +58,70 @@
   --v3-space-6: 1.5rem;
   --v3-space-8: 2rem;
 
-  /* Typography - Larger for readability */
+  /* Typography - Larger sizes for better readability */
   --v3-font-sans:
     "Manrope", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --v3-font-size-xs: 0.875rem;
-  /* 14px */
-  --v3-font-size-sm: 0.9375rem;
+  --v3-font-size-xs: 0.9375rem;
   /* 15px */
-  --v3-font-size-base: 1rem;
+  --v3-font-size-sm: 1rem;
   /* 16px */
-  --v3-font-size-lg: 1.0625rem;
+  --v3-font-size-base: 1.0625rem;
   /* 17px */
-  /* 16px */
-  --v3-font-size-xl: 1.125rem;
+  --v3-font-size-lg: 1.125rem;
   /* 18px */
-  --v3-font-size-2xl: 1.5rem;
-  /* 24px */
-  --v3-font-size-3xl: 1.875rem;
-  /* 30px */
+  --v3-font-size-xl: 1.25rem;
+  /* 20px */
+  --v3-font-size-2xl: 1.625rem;
+  /* 26px */
+  --v3-font-size-3xl: 2rem;
+  /* 32px */
 
-  /* Shadows - Very subtle like Matdash */
-  --v3-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.02);
-  --v3-shadow-md: 0 2px 8px 0 rgb(0 0 0 / 0.03);
-  --v3-shadow-lg: 0 8px 24px 0 rgb(0 0 0 / 0.04);
-  --v3-shadow-card: 0 4px 12px 0 rgb(0 0 0 / 0.03);
+  /* Shadows - Soft and subtle like MatDash */
+  --v3-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.03);
+  --v3-shadow-md: 0 2px 8px 0 rgb(0 0 0 / 0.04);
+  --v3-shadow-lg: 0 4px 16px 0 rgb(0 0 0 / 0.06);
+  --v3-shadow-card: 0 1px 4px 0 rgb(0 0 0 / 0.03);
+  --v3-shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.08);
 
-  /* Radii - Matdash uses larger radius */
-  --v3-radius-sm: 0.375rem;
+  /* Radii - Moderate rounded corners */
+  --v3-radius-sm: 0.25rem;
+  /* 4px */
+  --v3-radius-md: 0.375rem;
   /* 6px */
-  --v3-radius-md: 0.5rem;
-  /* 8px */
-  --v3-radius-lg: 0.75rem;
+  --v3-radius-lg: 0.5rem;
+  /* 8px - main card radius */
+  --v3-radius-xl: 0.75rem;
   /* 12px */
-  --v3-radius-xl: 1rem;
-  /* 16px */
+  --v3-radius-2xl: 1rem;
+  /* 16px - for featured cards only */
+
+  /* MatDash Pastel Gradient Colors */
+  --v3-gradient-pink-from: 340 82% 94%;
+  --v3-gradient-pink-to: 340 82% 97%;
+  --v3-gradient-violet-from: 270 76% 93%;
+  --v3-gradient-violet-to: 270 76% 96%;
+  --v3-gradient-blue-from: 210 100% 93%;
+  --v3-gradient-blue-to: 210 100% 96%;
+  --v3-gradient-green-from: 150 60% 92%;
+  --v3-gradient-green-to: 150 60% 96%;
+  --v3-gradient-yellow-from: 45 100% 92%;
+  --v3-gradient-yellow-to: 45 100% 96%;
+  --v3-gradient-cyan-from: 185 70% 91%;
+  --v3-gradient-cyan-to: 185 70% 95%;
+
+  /* MatDash Icon Background Colors (soft tints) */
+  --v3-icon-bg-pink: 340 82% 90%;
+  --v3-icon-bg-violet: 270 76% 88%;
+  --v3-icon-bg-blue: 210 100% 88%;
+  --v3-icon-bg-green: 150 60% 86%;
+  --v3-icon-bg-yellow: 45 100% 86%;
+  --v3-icon-bg-cyan: 185 70% 85%;
+
+  /* MatDash Icon Colors (vibrant) */
+  --v3-icon-pink: 340 82% 52%;
+  --v3-icon-violet: 270 76% 55%;
+  --v3-icon-blue: 210 100% 50%;
+  --v3-icon-green: 150 60% 40%;
+  --v3-icon-yellow: 45 100% 45%;
+  --v3-icon-cyan: 185 70% 40%;
 }
